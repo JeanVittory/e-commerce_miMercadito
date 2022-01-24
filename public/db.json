@@ -1,0 +1,397 @@
+[
+    {
+        "id": 1,
+        "imagen": "/assets/imgs/costillas.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Costillas de Res",
+        "PrecioAntes": 12.000,
+        "PrecioDespues": 9.600,
+        "PesoInicial": 0.5,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 2,
+        "imagen": "/assets/imgs/lentils.jpg",
+        "Descuento": "-15%",
+        "Nombre": "Lentejas la Floresta",
+        "PrecioAntes": 2.000,
+        "PrecioDespues": 2.100,
+        "PesoInicial": 0.5,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 3,
+        "imagen": "/assets/imgs/milk.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Leche entera Itanmbé",
+        "PrecioAntes": 3.500,
+        "PrecioDespues": 2.450,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 4,
+        "imagen": "/assets/imgs/tomatoes.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Tomáte Chonto",
+        "PrecioAntes": 1.200,
+        "PrecioDespues": 1.090,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 5,
+        "imagen": "/assets/imgs/spaguetti.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Spaguettis la Contanza",
+        "PrecioAntes": 1.500,
+        "PrecioDespues": 1.350,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 6,
+        "imagen": "/assets/imgs/apples.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Manzana Nacional",
+        "PrecioAntes": 5.000,
+        "PrecioDespues": 3.500,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 7,
+        "imagen": "/assets/imgs/cerveza.jpg",
+        "Descuento": "-50%",
+        "Nombre": "Cerveza Heineken",
+        "PrecioAntes": 6.000,
+        "PrecioDespues": 3.000,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 8,
+        "imagen": "/assets/imgs/pechuga.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Pechuga de Pollo",
+        "PrecioAntes": 10.000,
+        "PrecioDespues": 8.000,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 9,
+        "imagen": "/assets/imgs/cheese.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Queso Campesino",
+        "PrecioAntes": 10.000,
+        "PrecioDespues": 8.000,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 10,
+        "imagen": "/assets/imgs/beans.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Frijoles",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 2.100,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 11,
+        "imagen": "/assets/imgs/lettuce.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Lechuga Crespa",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 2.700,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 12,
+        "imagen": "/assets/imgs/tuna.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Atún en Aceite",
+        "PrecioAntes": 8.000,
+        "PrecioDespues": 4.800,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 13,
+        "imagen": "/assets/imgs/mangoe.jpg",
+        "Descuento": "-60%",
+        "Nombre": "Mango Tommy",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 1.200,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 14,
+        "imagen": "/assets/imgs/cauliflower.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Coliflor",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 2.700,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 15,
+        "imagen": "/assets/imgs/wine.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Vino Cabernet Sauvignon",
+        "PrecioAntes": 30.000,
+        "PrecioDespues": 21.000,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 16,
+        "imagen": "/assets/imgs/solomillo.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Solomillo de Res",
+        "PrecioAntes": 15.000,
+        "PrecioDespues": 10.500,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+    
+    {
+        "id": 17,
+        "imagen": "/assets/imgs/yogurth.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Yogurth Alpro",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 2.700,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 18,
+        "imagen": "/assets/imgs/rice.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Arroz Flor Huila",
+        "PrecioAntes": 15.000,
+        "PrecioDespues": 10.500,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 19,
+        "imagen": "/assets/imgs/carrots.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Zanahoria",
+        "PrecioAntes": 1.000,
+        "PrecioDespues": 800,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 20,
+        "imagen": "/assets/imgs/cornflakes.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Kellogs",
+        "PrecioAntes": 15.000,
+        "PrecioDespues": 13.500,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 21,
+        "imagen": "/assets/imgs/banana.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Banano",
+        "PrecioAntes": 2.000,
+        "PrecioDespues": 1.400,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 22,
+        "imagen": "/assets/imgs/cocacola.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Coca Cola Personal",
+        "PrecioAntes": 2.000,
+        "PrecioDespues": 2.700,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 23,
+        "imagen": "/assets/imgs/sausage.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Chorizo Ahumado x 4",
+        "PrecioAntes": 8.000,
+        "PrecioDespues": 5.600,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 24,
+        "imagen": "/assets/imgs/kumis.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Kumis",
+        "PrecioAntes": 8.000,
+        "PrecioDespues": 6.400,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 25,
+        "imagen": "/assets/imgs/blanquillos.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Blanquillos Flor Huila",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 2.400,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 26,
+        "imagen": "/assets/imgs/spinach.jpg",
+        "Descuento": "-40%",
+        "Nombre": "Espinaca",
+        "PrecioAntes": 2.000,
+        "PrecioDespues": 1.200,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 27,
+        "imagen": "/assets/imgs/oil.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Aceite de Oliva",
+        "PrecioAntes": 10.000,
+        "PrecioDespues": 8.000,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 28,
+        "imagen": "/assets/imgs/papaya.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Papaya",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 2.400,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 29,
+        "imagen": "/assets/imgs/water.jpg",
+        "Descuento": "-5%",
+        "Nombre": "Agua Personal",
+        "PrecioAntes": 3.000,
+        "PrecioDespues": 2.850,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 30,
+        "imagen": "/assets/imgs/shrimp.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Camarones Jumbo",
+        "PrecioAntes": 30.000,
+        "PrecioDespues": 21.000,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 31,
+        "imagen": "/assets/imgs/milk-lactose-free.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Leche Deslactosada",
+        "PrecioAntes": 5.000,
+        "PrecioDespues": 4.500,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 32,
+        "imagen": "/assets/imgs/peas.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Arveja Nacional",
+        "PrecioAntes": 6.000,
+        "PrecioDespues": 4.800,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 33,
+        "imagen": "/assets/imgs/garlic.jpg",
+        "Descuento": "-20%",
+        "Nombre": "Ajo",
+        "PrecioAntes": 2.000,
+        "PrecioDespues": 1.600,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 34,
+        "imagen": "/assets/imgs/ketchup.jpg",
+        "Descuento": "-10%",
+        "Nombre": "Salsa de Tomáte",
+        "PrecioAntes": 5.000,
+        "PrecioDespues": 4.500,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    },
+
+    {
+        "id": 35,
+        "imagen": "/assets/imgs/lemon.jpg",
+        "Descuento": "-30%",
+        "Nombre": "Limón Amarillo",
+        "PrecioAntes": 4.000,
+        "PrecioDespues": 2.800,
+        "PesoInicial": null,
+        "UnidadDePeso": "Kg"
+    },
+
+    {
+        "id": 36,
+        "imagen": "/assets/imgs/redbull.jpg",
+        "Descuento": "-5%",
+        "Nombre": "Red Bull",
+        "PrecioAntes": 5.000,
+        "PrecioDespues": 4.750,
+        "PesoInicial": null,
+        "UnidadDePeso": "Und"
+    }
+]

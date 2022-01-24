@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>MiMercadito</title>
+</head>
+<body>
+    <header class="header">
+
+        <!--Logo-->
+        <div class="flex  items-center">
+            <img src="../public/assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo">
+            <h1 class="logo">MiMercadito</h1>
+        </div>
+
+        <!--Carrito de compras-->
+        <div>
+            <img src="../public/assets/svg/basket.svg" alt="Canasta de compras">
+        </div>
+
+        <!--Navegación a otras paginas del sitio web-->
+        <nav>
+            <a class="button-nav  font-medium" href="">Inicio</a>
+            <a class="button-nav" href="">FAQS</a>
+            <a class="button-nav" href="">Contacto</a>
+        </nav>
+    </header>
+
+    <!--Barra de navegación por categorias de productos-->
+    <nav class="container  mx-auto  flex  justify-around  mt-12">
+
+        <button class="selected-category">Todos</button>
+        <button class="unselected-category">Carnes</button>
+        <button class="unselected-category">Lácteos</button>
+        <button class="unselected-category">Granos</button>
+        <button class="unselected-category">Vegetales</button>
+        <button class="unselected-category">Empacados</button>
+        <button class="unselected-category">Frutas</button>
+        <button class="unselected-category">Bebidas</button>
+
+    </nav>
+
+    
+
+    <main>
+        <!--Aqui comienzan las tarjetas de productos -->
+    </main>
+
+    <template>
+          <!--Primera tareta de productos -->
+          <article>
+            <!--Imagen del producto -->
+            <div>
+                <img src="" alt="">
+                <div>-20%</div>
+            </div>
+            
+            <div>
+                <!--Nombre del producto -->    
+                <h2>Costillas de Res</h2>
+                
+                <div>
+                    <!--información del producto-->
+                    <p>Antes</p>
+                    <p>$12.000</p>
+                    <p>Ahora</p>
+                    <p>$9.600</p>
+                    
+                    <!--Barra para agregar o quitar las cantidades a comprar-->
+                    <div>
+                        <button><img src="../public/assets/svg/less.svg" alt="Menos"></button>
+                        <p>0.0</p>
+                        <p>Kg</p>
+                        <button><img src="../public/assets/svg/add.svg" alt="Más"></button>
+                    </div>
+                    
+                    <!--Botón para agragar al carrito-->
+                    <button>Agregar al carrito</button>
+                </div>
+
+            </div>
+        </article>
+    </template>
+
+    <!--Aqui terminan las tarjetas de productos -->
+
+    <script src="app.js"></script>
+</body>
+</html>

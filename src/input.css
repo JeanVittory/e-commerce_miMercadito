@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button-nav{
+    @apply ml-4  text-base  font-roboto;
+}
+
+.logo{
+    @apply text-center  align-middle  ml-1  text-xl  text-logo  font-roboto;
+}
+
+.header{
+    @apply container  mx-auto  flex  flex-row  flex-nowrap  justify-between  items-center  mt-4;
+} 
+
+.selected-category{
+    @apply bg-yellowTab  text-white  p-2  rounded-lg;
+}
+
+.unselected-category{
+    @apply bg-unselectTab  text-black  p-2  rounded-lg;
+}
