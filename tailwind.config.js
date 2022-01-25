@@ -13,7 +13,7 @@ module.exports = {
         orangeBasket: '#FB8500',
         redNumberBasket: '#F10000',
         redBtnEnviar: '#FF4D4D',
-        yellowCard: '#FFC451',
+        yellowCard: 'rgba(255, 196, 81, 0.8);',
         yellowTab: '#FFB800',
         yellowDsc: '#FCEE00',
         yellowBuyMore: '#FEE5A5',

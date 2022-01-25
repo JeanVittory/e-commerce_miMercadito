@@ -45,32 +45,31 @@
 
     
 
-    <main>
+    <main class="container  mx-auto  px-14  mt-20  grid  grid-cols-3  gap-12">
         <!--Aqui comienzan las tarjetas de productos -->
-    </main>
-
-    <template>
-          <!--Primera tareta de productos -->
-          <article>
+        <article class="flex  flex-nowrap  flex-col  shadow-card  rounded-xl">
             <!--Imagen del producto -->
-            <div>
-                <img src="" alt="">
-                <div>-20%</div>
+            <div class="shadow-card z-50 rounded-t-xl">
+                <div class="absolute  bg-yellowDsc rounded-dsc p-2  font-roboto">-20%</div>
+                <img class="rounded-t-xl" src="/public/assets/imgs/costillas.jpg" alt="">
+                
             </div>
             
-            <div>
+            <div class="flex flex-nowrap flex-col  yellow-card  rounded-b-xl">
                 <!--Nombre del producto -->    
-                <h2>Costillas de Res</h2>
+                <h2 class="m-auto  mt-4  font-roboto  text-lg  font-medium">Costillas de Res</h2>
                 
-                <div>
+                <div class="flex flex-col  mt-2">
                     <!--información del producto-->
-                    <p>Antes</p>
-                    <p>$12.000</p>
-                    <p>Ahora</p>
-                    <p>$9.600</p>
+                    <div class="grid grid-cols-2  content-center">
+                        <p class="text-center  font-roboto">Antes</p>
+                        <p class="text-center  font-roboto  line-through">$12.000</p>
+                        <p class="text-center  font-roboto  mt-1">Ahora</p>
+                        <p class="text-center  font-roboto  mt-1">$9.600</p>
+                    </div>
                     
                     <!--Barra para agregar o quitar las cantidades a comprar-->
-                    <div>
+                    <div class="w-8/12  flex  flex-row  flex-nowrap  justify-between  white-bar  rounded-xl  px-2  m-auto  shadow-bar  mt-4">
                         <button><img src="../public/assets/svg/less.svg" alt="Menos"></button>
                         <p>0.0</p>
                         <p>Kg</p>
@@ -78,7 +77,46 @@
                     </div>
                     
                     <!--Botón para agragar al carrito-->
-                    <button>Agregar al carrito</button>
+                    <button class= "w-1/2  bg-orangeBasket  text-white  rounded-xl  font-roboto  m-auto  py-0.5  mt-6  mb-3">Agregar al carrito</button>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <template>
+          <!--Primera tareta de productos -->
+          <article class="flex  flex-nowrap  flex-col  shadow-card  rounded-xl">
+            <!--Imagen del producto -->
+            <div class="shadow-card z-50 rounded-t-xl">
+                <div class="absolute  bg-yellowDsc rounded-dsc p-2  font-roboto">-20%</div>
+                <img class="rounded-t-xl" src="/public/assets/imgs/costillas.jpg" alt="">
+                
+            </div>
+            
+            <div class="flex flex-nowrap flex-col  yellow-card  rounded-b-xl">
+                <!--Nombre del producto -->    
+                <h2 class="m-auto  mt-4  font-roboto  text-lg  font-medium">Costillas de Res</h2>
+                
+                <div class="flex flex-col  mt-2">
+                    <!--información del producto-->
+                    <div class="grid grid-cols-2  content-center">
+                        <p class="text-center  font-roboto">Antes</p>
+                        <p class="text-center  font-roboto  line-through">$12.000</p>
+                        <p class="text-center  font-roboto  mt-1">Ahora</p>
+                        <p class="text-center  font-roboto  mt-1">$9.600</p>
+                    </div>
+                    
+                    <!--Barra para agregar o quitar las cantidades a comprar-->
+                    <div class="w-8/12  flex  flex-row  flex-nowrap  justify-between  white-bar  rounded-xl  px-2  m-auto  shadow-bar  mt-4">
+                        <button><img src="../public/assets/svg/less.svg" alt="Menos"></button>
+                        <p>0.0</p>
+                        <p>Kg</p>
+                        <button><img src="../public/assets/svg/add.svg" alt="Más"></button>
+                    </div>
+                    
+                    <!--Botón para agragar al carrito-->
+                    <button class= "w-1/2  bg-orangeBasket  text-white  rounded-xl  font-roboto  m-auto  py-0.5  mt-6  mb-3">Agregar al carrito</button>
                 </div>
 
             </div>
