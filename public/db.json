@@ -7,7 +7,8 @@
         "PrecioAntes": 12.000,
         "PrecioDespues": 9.600,
         "PesoInicial": 0.5,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 1
     },
 
     {
@@ -18,7 +19,8 @@
         "PrecioAntes": 2.000,
         "PrecioDespues": 2.100,
         "PesoInicial": 0.5,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 3
     },
 
     {
@@ -29,7 +31,8 @@
         "PrecioAntes": 3.500,
         "PrecioDespues": 2.450,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 2
     },
 
     {
@@ -40,7 +43,8 @@
         "PrecioAntes": 1.200,
         "PrecioDespues": 1.090,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 4
     },
 
     {
@@ -51,7 +55,8 @@
         "PrecioAntes": 1.500,
         "PrecioDespues": 1.350,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 5
     },
 
     {
@@ -62,7 +67,8 @@
         "PrecioAntes": 5.000,
         "PrecioDespues": 3.500,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 6
     },
 
     {
@@ -73,7 +79,8 @@
         "PrecioAntes": 6.000,
         "PrecioDespues": 3.000,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 7
     },
 
     {
@@ -84,7 +91,8 @@
         "PrecioAntes": 10.000,
         "PrecioDespues": 8.000,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 1
     },
 
     {
@@ -95,7 +103,8 @@
         "PrecioAntes": 10.000,
         "PrecioDespues": 8.000,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 2
     },
 
     {
@@ -106,7 +115,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 2.100,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 3
     },
 
     {
@@ -117,7 +127,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 2.700,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 4
     },
 
     {
@@ -128,7 +139,8 @@
         "PrecioAntes": 8.000,
         "PrecioDespues": 4.800,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 1
     },
 
     {
@@ -139,7 +151,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 1.200,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 6
     },
 
     {
@@ -150,7 +163,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 2.700,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 4
     },
 
     {
@@ -161,7 +175,8 @@
         "PrecioAntes": 30.000,
         "PrecioDespues": 21.000,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 7
     },
 
     {
@@ -172,7 +187,8 @@
         "PrecioAntes": 15.000,
         "PrecioDespues": 10.500,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 1
     },
     
     {
@@ -183,7 +199,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 2.700,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 2
     },
 
     {
@@ -194,7 +211,8 @@
         "PrecioAntes": 15.000,
         "PrecioDespues": 10.500,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 3
     },
 
     {
@@ -205,7 +223,8 @@
         "PrecioAntes": 1.000,
         "PrecioDespues": 800,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 4
     },
 
     {
@@ -216,7 +235,8 @@
         "PrecioAntes": 15.000,
         "PrecioDespues": 13.500,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 5
     },
 
     {
@@ -227,7 +247,8 @@
         "PrecioAntes": 2.000,
         "PrecioDespues": 1.400,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 6
     },
 
     {
@@ -238,7 +259,8 @@
         "PrecioAntes": 2.000,
         "PrecioDespues": 2.700,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 7
     },
 
     {
@@ -249,7 +271,8 @@
         "PrecioAntes": 8.000,
         "PrecioDespues": 5.600,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 1
     },
 
     {
@@ -260,7 +283,8 @@
         "PrecioAntes": 8.000,
         "PrecioDespues": 6.400,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 2
     },
 
     {
@@ -271,7 +295,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 2.400,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 3
     },
 
     {
@@ -282,7 +307,8 @@
         "PrecioAntes": 2.000,
         "PrecioDespues": 1.200,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 4
     },
 
     {
@@ -293,7 +319,8 @@
         "PrecioAntes": 10.000,
         "PrecioDespues": 8.000,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 5
     },
 
     {
@@ -304,7 +331,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 2.400,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 6
     },
 
     {
@@ -315,7 +343,8 @@
         "PrecioAntes": 3.000,
         "PrecioDespues": 2.850,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 7
     },
 
     {
@@ -326,7 +355,8 @@
         "PrecioAntes": 30.000,
         "PrecioDespues": 21.000,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 1
     },
 
     {
@@ -337,7 +367,8 @@
         "PrecioAntes": 5.000,
         "PrecioDespues": 4.500,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 2
     },
 
     {
@@ -348,7 +379,8 @@
         "PrecioAntes": 6.000,
         "PrecioDespues": 4.800,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 3
     },
 
     {
@@ -359,7 +391,8 @@
         "PrecioAntes": 2.000,
         "PrecioDespues": 1.600,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 4
     },
 
     {
@@ -370,7 +403,8 @@
         "PrecioAntes": 5.000,
         "PrecioDespues": 4.500,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 5
     },
 
     {
@@ -381,7 +415,8 @@
         "PrecioAntes": 4.000,
         "PrecioDespues": 2.800,
         "PesoInicial": null,
-        "UnidadDePeso": "Kg"
+        "UnidadDePeso": "Kg",
+        "Grupo": 6
     },
 
     {
@@ -392,6 +427,7 @@
         "PrecioAntes": 5.000,
         "PrecioDespues": 4.750,
         "PesoInicial": null,
-        "UnidadDePeso": "Und"
+        "UnidadDePeso": "Und",
+        "Grupo": 7
     }
 ]

@@ -20,6 +20,15 @@
     .white-bar{
         background: rgba(233, 233, 233, 0.8);
     }
+
+    .hidden-scroll-1::-webkit-scrollbar {
+        display: none; /* chrome, safari y Opera*/
+    }
+
+    .hidden-scroll-2{
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
 }
 
 .button-nav{
