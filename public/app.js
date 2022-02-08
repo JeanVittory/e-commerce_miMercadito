@@ -19,11 +19,14 @@ const fetchData = async()=>{
 const pintarCards = data =>{
     data.forEach(element => {
         templateCards.querySelector('img').setAttribute('src', element.imagen);
+        templateCards.querySelector('img').setAttribute('alt', "producto")
         templateCards.querySelector('#dscto').textContent = element.Descuento;   
         templateCards.querySelector('#titulo-card').textContent = element.Nombre;
         templateCards.querySelector('#precio-antes').textContent = element.PrecioAntes.toFixed(3);
         templateCards.querySelector('#precio-ahora').textContent = element.PrecioDespues.toFixed(3)
         templateCards.querySelector('#unidades').textContent = element.UnidadDePeso;
+        templateCards.querySelector('#btn-less').dataset.id = element.id;
+        templateCards.querySelector('#btn-increased').dataset.id = element.id;
         const clone = templateCards.cloneNode(true)
         fragment.appendChild(clone)
     });
