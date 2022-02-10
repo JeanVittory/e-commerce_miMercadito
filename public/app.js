@@ -6,18 +6,59 @@ document.addEventListener("DOMContentLoaded", ()=>{
     fetchData();
 })
 
+let contadorKg = 0;
+const sumaKilogramos = () =>{
+    return contadorKg += 0.5
+}    
+
+//Función que solicita informacion del db.json
 const fetchData = async()=>{
     try {
         const res = await fetch('db.json');
         const data = await res.json();
         pintarCards(data);
+        sumarCantidadesKg();
+        restarCantidadesKg();
     } catch (error) {
         console.log(error)
     }
 }
 
-const pintarCards = data =>{
+const sumarCantidadesKg = ()=>{   
+    const btnsIncreased = document.querySelectorAll("#btn-increased");
+    btnsIncreased.forEach(btn=>{
+        btn.addEventListener("click", (e)=>{
+                           
+            const idBtnIncreased = e.target.parentNode.dataset.id
+            const quantityBtnIncreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnIncreased}]`)
+            const valueIncreased = parseFloat(quantityBtnIncreased.innerHTML)
+            quantityBtnIncreased.textContent = valueIncreased + 0.5;
+                
+        })
+    })
+    
+}
+
+const restarCantidadesKg = ()=>{
+    const btnsDecreased = document.querySelectorAll("#btn-less")
+    console.log(btnsDecreased)
+    btnsDecreased.forEach(btn =>{
+        btn.addEventListener("click", (e)=>{
+            const idBtnDecreased =e.target.parentNode.dataset.id
+            const quantityBtnDecreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnDecreased}]`)
+            console.log(quantityBtnDecreased.textContent)
+            const valueDecreased = parseFloat(quantityBtnDecreased.innerHTML)
+            if(quantityBtnDecreased.textContent > 0){
+                quantityBtnDecreased.textContent = valueDecreased - 0.5
+            }
+        })
+    })
+}
+
+//Funcion que usa la info de db.json para renderizar en pantalla la data
+const pintarCards = (data) =>{
     data.forEach(element => {
+        templateCards.querySelector('.id-gen').dataset.id = element.id;
         templateCards.querySelector('img').setAttribute('src', element.imagen);
         templateCards.querySelector('img').setAttribute('alt', "producto")
         templateCards.querySelector('#dscto').textContent = element.Descuento;   
@@ -26,9 +67,12 @@ const pintarCards = data =>{
         templateCards.querySelector('#precio-ahora').textContent = element.PrecioDespues.toFixed(3)
         templateCards.querySelector('#unidades').textContent = element.UnidadDePeso;
         templateCards.querySelector('#btn-less').dataset.id = element.id;
+        templateCards.querySelector("#cantidadProducto").dataset.quantity = `cantidad${element.id}`
         templateCards.querySelector('#btn-increased').dataset.id = element.id;
+        templateCards.querySelector('#unidades').dataset.unidades = element.UnidadDePeso
         const clone = templateCards.cloneNode(true)
         fragment.appendChild(clone)
+        
     });
 
     cards.appendChild(fragment)
@@ -38,54 +82,48 @@ const pintarCards = data =>{
 let productosComprados = [];    
       
     
-        // Función que aumentara .5 cada vez que el cliente de click en el '+' de la tarjeta en cada producto calculado en KG
-        let contadorKg = 0;
-        const sumaKilogramos = () =>{
-            return contadorKg += 0.5
-        }    
+// Función que aumentara .5 cada vez que el cliente de click en el '+' de la tarjeta en cada producto calculado en KG
     
-        // Función que aumentara .5 cada vez que el cliente de click en el '+' de la tarjeta en cada producto calculado en KG
-        const restaKilogramos = () =>{
-            if(contadorKg === 0) return 0;
-            if(contadorKg > 0) return contadorKg -= 0.5;
-        }    
+// Función que aumentara .5 cada vez que el cliente de click en el '+' de la tarjeta en cada producto calculado en KG
+const restaKilogramos = () =>{
+    if(contadorKg === 0) return 0;
+    if(contadorKg > 0) return contadorKg -= 0.5;
+}    
     
-        // Función que aumentara de 1 en 1 cada vez que el cliente de click en el '+' de la tarjeta en cada producto calculado en unidades
-        let contadorUnidades = 0;
-        const SumaUnidades = () =>{
-            return contadorUnidades += 1;
-        }    
+// Función que aumentara de 1 en 1 cada vez que el cliente de click en el '+' de la tarjeta en cada producto calculado en unidades
+let contadorUnidades = 0;
+const SumaUnidades = () =>{
+    return contadorUnidades += 1;
+}    
     
-        // Función que disminuira de 1 en 1 cada vez que el cliente de click en el '-' de la tarjeta en cada producto calculado en unidades
-        const RestaUnidades = () =>{
+// Función que disminuira de 1 en 1 cada vez que el cliente de click en el '-' de la tarjeta en cada producto calculado en unidades
+const RestaUnidades = () =>{
+    if(contadorUnidades > 0 ) return contadorUnidades -= 1;
+    if(contadorUnidades === 0) return 0;
+}
     
-            if(contadorUnidades > 0 ) return contadorUnidades -= 1;
-            if(contadorUnidades === 0) return 0;
-        }
+// Función que retorna el total de la cantidad comprada por el cliente:
+const cantidadTotal = ()=>{
+    const sumaCantidades = productosComprados.reduce((acc, {cantidad}) => acc + cantidad , 0);
+    return sumaCantidades;
+};
+//Función que retorna el subtotal de lo comprado por el cliente:
+const subTotal = () =>{
+    const sumaTotal = productosComprados.reduce((acc, {precio, cantidad}) => acc + precio*cantidad, 0);
+    return sumaTotal.toFixed(3);
+};    
     
-        // Función que retorna el total de la cantidad comprada por el cliente:
-        const cantidadTotal = ()=>{
-            const sumaCantidades = productosComprados.reduce((acc, {cantidad}) => acc + cantidad , 0);
-            return sumaCantidades;
-        };
+// Esta funcion retorna el impuesto expresado en pesos el cual será sumado al gran total
+const ivaCalculado = ()=>{
+    const resultadoIva = (subTotal() * 19) / 100;
+    return resultadoIva.toFixed(3);
+}    
     
-        //Función que retorna el subtotal de lo comprado por el cliente:
-        const subTotal = () =>{
-            const sumaTotal = productosComprados.reduce((acc, {precio, cantidad}) => acc + precio*cantidad, 0);
-            return sumaTotal.toFixed(3);
-        };    
-    
-        // Esta funcion retorna el impuesto expresado en pesos el cual será sumado al gran total
-        const ivaCalculado = ()=>{
-            const resultadoIva = (subTotal() * 19) / 100;
-            return resultadoIva.toFixed(3);
-        }    
-    
-        //Funcion que retorna el total despues del impuesto de IVA (19% col)
-        const granTotal = ()=>{
-            const granTotal = parseFloat(parseFloat(subTotal())) + parseFloat(ivaCalculado());
-            return granTotal.toFixed(3);
-        }
+//Funcion que retorna el total despues del impuesto de IVA (19% col)
+const granTotal = ()=>{
+    const granTotal = parseFloat(parseFloat(subTotal())) + parseFloat(ivaCalculado());
+    return granTotal.toFixed(3);
+}
     
     
     

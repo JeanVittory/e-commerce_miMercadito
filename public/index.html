@@ -36,14 +36,14 @@
     <!--Barra de navegación por categorias de productos-->
     <nav class="container  flex  sm:justify-between  mt-8  overflow-x-scroll  hidden-scroll-1  hidden-scroll-2  sm:mx-auto">
 
-        <button class="selected-category  mx-2  lg:justify-around  lg:mx-0">Todos</button>
-        <button class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Carnes</button>
-        <button class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Lácteos</button>
-        <button class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Granos</button>
-        <button class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Vegetales</button>
-        <button class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Empacados</button>
-        <button class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Frutas</button>
-        <button class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Bebidas</button>
+        <button id="btn-all" class="selected-category  mx-2  lg:justify-around  lg:mx-0">Todos</button>
+        <button id="btn-carnes" class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Carnes</button>
+        <button id="btn-lacteos" class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Lácteos</button>
+        <button id="btn-granos" class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Granos</button>
+        <button id="btn-vegetales" class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Vegetales</button>
+        <button id="btn-empacados" class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Empacados</button>
+        <button id="btn-frutas" class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Frutas</button>
+        <button id="btn-bebidas" class="unselected-category  mx-2  lg:justify-around  lg:mx-0">Bebidas</button>
 
     </nav>
 
@@ -52,8 +52,8 @@
     </main>
 
     <template id="template-cards">
-          <!--Primera tareta de productos -->
-          <article class="flex  flex-nowrap  flex-col  shadow-card  rounded-xl">
+        <!--Primera tareta de productos -->
+        <article class="flex  flex-nowrap  flex-col  shadow-card  rounded-xl">
             <!--Imagen del producto -->
             <div class="shadow-card  z-50  rounded-t-xl">
                 <div id="dscto" class="absolute  bg-yellowDsc rounded-dsc p-2  font-roboto">-20%</div>
@@ -74,10 +74,10 @@
                     </div>
                     
                     <!--Barra para agregar o quitar las cantidades a comprar-->
-                    <div class="w-8/12  flex  flex-row  flex-nowrap  justify-between  white-bar  rounded-xl  px-2  m-auto  shadow-bar  mt-4">
+                    <div id="compras-box" class="id-gen  w-8/12  flex  flex-row  flex-nowrap  justify-between  white-bar  rounded-xl  px-2  m-auto  shadow-bar  mt-4">
                         <button id="btn-less"><img src="../public/assets/svg/less.svg" alt="Menos"></button>
-                        <p>0.0</p>
-                        <p id="unidades">Kg</p>
+                        <p id="cantidadProducto" class="cantidadProducto">0.0</p>
+                        <p id="unidades">Und</p>
                         <button id="btn-increased"><img src="../public/assets/svg/add.svg" alt="Más"></button>
                     </div>
                     
