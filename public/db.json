@@ -49,9 +49,9 @@
 
     {
         "id": 5,
-        "imagen": "assets/imgs/spaguetti.jpg",
+        "imagen": "assets/imgs/chocolate.jpg",
         "Descuento": "-10%",
-        "Nombre": "Spaguettis la Contanza",
+        "Nombre": "Chocolate",
         "PrecioAntes": 1.500,
         "PrecioDespues": 1.350,
         "PesoInicial": null,
@@ -75,7 +75,7 @@
         "id": 7,
         "imagen": "assets/imgs/cerveza.jpg",
         "Descuento": "-50%",
-        "Nombre": "Cerveza Heineken",
+        "Nombre": "Cerveza Corona",
         "PrecioAntes": 6.000,
         "PrecioDespues": 3.000,
         "PesoInicial": null,
@@ -135,7 +135,7 @@
         "id": 12,
         "imagen": "assets/imgs/tuna.jpg",
         "Descuento": "-30%",
-        "Nombre": "Atún en Aceite",
+        "Nombre": "Tilapia Roja",
         "PrecioAntes": 8.000,
         "PrecioDespues": 4.800,
         "PesoInicial": null,
@@ -397,9 +397,9 @@
 
     {
         "id": 34,
-        "imagen": "assets/imgs/ketchup.jpg",
+        "imagen": "assets/imgs/miel.jpg",
         "Descuento": "-10%",
-        "Nombre": "Salsa de Tomáte",
+        "Nombre": "Miel de Abejas",
         "PrecioAntes": 5.000,
         "PrecioDespues": 4.500,
         "PesoInicial": null,

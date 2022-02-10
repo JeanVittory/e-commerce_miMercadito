@@ -4,12 +4,7 @@ const fragment = document.createDocumentFragment();
 
 document.addEventListener("DOMContentLoaded", ()=>{
     fetchData();
-})
-
-let contadorKg = 0;
-const sumaKilogramos = () =>{
-    return contadorKg += 0.5
-}    
+}) 
 
 //Función que solicita informacion del db.json
 const fetchData = async()=>{
@@ -19,46 +14,19 @@ const fetchData = async()=>{
         pintarCards(data);
         sumarCantidadesKg();
         restarCantidadesKg();
+        sumarCantidadesUnd();
+        restarCantidadesUnd();
     } catch (error) {
         console.log(error)
     }
 }
 
-const sumarCantidadesKg = ()=>{   
-    const btnsIncreased = document.querySelectorAll("#btn-increased");
-    btnsIncreased.forEach(btn=>{
-        btn.addEventListener("click", (e)=>{
-                           
-            const idBtnIncreased = e.target.parentNode.dataset.id
-            const quantityBtnIncreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnIncreased}]`)
-            const valueIncreased = parseFloat(quantityBtnIncreased.innerHTML)
-            quantityBtnIncreased.textContent = valueIncreased + 0.5;
-                
-        })
-    })
-    
-}
-
-const restarCantidadesKg = ()=>{
-    const btnsDecreased = document.querySelectorAll("#btn-less")
-    console.log(btnsDecreased)
-    btnsDecreased.forEach(btn =>{
-        btn.addEventListener("click", (e)=>{
-            const idBtnDecreased =e.target.parentNode.dataset.id
-            const quantityBtnDecreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnDecreased}]`)
-            console.log(quantityBtnDecreased.textContent)
-            const valueDecreased = parseFloat(quantityBtnDecreased.innerHTML)
-            if(quantityBtnDecreased.textContent > 0){
-                quantityBtnDecreased.textContent = valueDecreased - 0.5
-            }
-        })
-    })
-}
-
 //Funcion que usa la info de db.json para renderizar en pantalla la data
-const pintarCards = (data) =>{
+const pintarCards = data =>{
     data.forEach(element => {
+        const clone = templateCards.cloneNode(true)
         templateCards.querySelector('.id-gen').dataset.id = element.id;
+        templateCards.querySelector('.id-gen').dataset.unidades = element.UnidadDePeso
         templateCards.querySelector('img').setAttribute('src', element.imagen);
         templateCards.querySelector('img').setAttribute('alt', "producto")
         templateCards.querySelector('#dscto').textContent = element.Descuento;   
@@ -67,15 +35,84 @@ const pintarCards = (data) =>{
         templateCards.querySelector('#precio-ahora').textContent = element.PrecioDespues.toFixed(3)
         templateCards.querySelector('#unidades').textContent = element.UnidadDePeso;
         templateCards.querySelector('#btn-less').dataset.id = element.id;
+        templateCards.querySelector('#btn-less').dataset.unidades = element.UnidadDePeso;
         templateCards.querySelector("#cantidadProducto").dataset.quantity = `cantidad${element.id}`
         templateCards.querySelector('#btn-increased').dataset.id = element.id;
-        templateCards.querySelector('#unidades').dataset.unidades = element.UnidadDePeso
-        const clone = templateCards.cloneNode(true)
+        templateCards.querySelector('#btn-increased').dataset.unidades = element.UnidadDePeso
         fragment.appendChild(clone)
         
     });
 
     cards.appendChild(fragment)
+}
+
+//Función que suma 1 libra a los productos catalogados en KG desde el .JSON
+const sumarCantidadesKg = ()=>{   
+    const btnsIncreased = document.querySelectorAll("#btn-increased");
+    btnsIncreased.forEach(btn=>{
+        btn.addEventListener("click", e =>{                     
+            const idBtnIncreased = e.target.parentNode.dataset.id;
+            const idUnidades = e.target.parentNode.dataset.unidades;
+            const quantityBtnIncreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnIncreased}]`);
+            const valueIncreased = parseFloat(quantityBtnIncreased.innerHTML);
+            //Aqui se valida el tipo de unidad de peso, si el producto esta en KG se ejecuta la suma de 1 libra.
+            if(idUnidades === "Kg"){
+                quantityBtnIncreased.textContent = valueIncreased + 0.5; 
+            }
+        })
+    })  
+}
+
+//Función que resta 1 libra a los productos catalogados en KG desde el .JSON
+const restarCantidadesKg = ()=>{
+    const btnsDecreased = document.querySelectorAll("#btn-less")
+    btnsDecreased.forEach(btn =>{
+        btn.addEventListener("click", e =>{
+            const idBtnDecreased = e.target.parentNode.dataset.id;
+            const idUnidades = e.target.parentNode.dataset.unidades;
+            const quantityBtnDecreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnDecreased}]`);
+            const valueDecreased = parseFloat(quantityBtnDecreased.innerHTML);
+            if(idUnidades === "Kg"){
+                if(quantityBtnDecreased.textContent > 0){
+                    quantityBtnDecreased.textContent = valueDecreased - 0.5;
+                }
+            }
+        })
+    })
+}
+
+//Función que suma 1 unidad a los productos catalogados en UND desde el .JSON
+const sumarCantidadesUnd = ()=>{
+    const btnsIncreased = document.querySelectorAll('#btn-increased')
+    btnsIncreased.forEach(btn =>{
+        btn.addEventListener("click", e =>{
+            const idBtnIncreased = e.target.parentNode.dataset.id;
+            const idUnidades = e.target.parentNode.dataset.unidades;
+            const quantityBtnIncreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnIncreased}]`);
+            const valueIncreased = parseInt(quantityBtnIncreased.innerHTML);
+            if(idUnidades === "Und"){
+                quantityBtnIncreased.textContent = valueIncreased + 1;
+            }
+        })
+    })
+}
+
+//Función que resta 1 unidad a los productos catalogados en UND desde el .JSON
+const restarCantidadesUnd = ()=>{
+    const btnsDecreased = document.querySelectorAll("#btn-less")
+    btnsDecreased.forEach(btn =>{
+        btn.addEventListener("click", e =>{
+            const idBtnDecreased = e.target.parentNode.dataset.id;
+            const idUnidades = e.target.parentNode.dataset.unidades;
+            const quantityBtnDecreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnDecreased}]`);
+            const valueDecreased = parseInt(quantityBtnDecreased.innerHTML);
+            if(idUnidades === "Und"){
+                if(quantityBtnDecreased.textContent > 0){
+                    quantityBtnDecreased.textContent = valueDecreased - 1;
+                }
+            }
+        })
+    })
 }
 
 //Este objeto esta enfocado a ser dinámico en funcion de lo que el cliente vaya agregando desde el DOM
