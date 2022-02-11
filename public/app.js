@@ -4,6 +4,8 @@ const fragment = document.createDocumentFragment();
 
 document.addEventListener("DOMContentLoaded", ()=>{
     fetchData();
+
+    
 }) 
 
 //Función que solicita informacion del db.json
@@ -16,17 +18,17 @@ const fetchData = async()=>{
         restarCantidadesKg();
         sumarCantidadesUnd();
         restarCantidadesUnd();
+        filterProducts();
     } catch (error) {
         console.log(error)
     }
 }
 
+
 //Funcion que usa la info de db.json para renderizar en pantalla la data
 const pintarCards = data =>{
     data.forEach(element => {
-        const clone = templateCards.cloneNode(true)
-        templateCards.querySelector('.id-gen').dataset.id = element.id;
-        templateCards.querySelector('.id-gen').dataset.unidades = element.UnidadDePeso
+        templateCards.querySelector('article').dataset.grupoFiltro = element.Grupo;        
         templateCards.querySelector('img').setAttribute('src', element.imagen);
         templateCards.querySelector('img').setAttribute('alt', "producto")
         templateCards.querySelector('#dscto').textContent = element.Descuento;   
@@ -39,11 +41,40 @@ const pintarCards = data =>{
         templateCards.querySelector("#cantidadProducto").dataset.quantity = `cantidad${element.id}`
         templateCards.querySelector('#btn-increased').dataset.id = element.id;
         templateCards.querySelector('#btn-increased').dataset.unidades = element.UnidadDePeso
+        const clone = templateCards.cloneNode(true)
         fragment.appendChild(clone)
-        
     });
-
     cards.appendChild(fragment)
+}
+
+const filterProducts = ()=>{
+    const btnsFilter = document.querySelectorAll(".btn");
+    const productos = document.querySelectorAll(".producto");
+    
+    for( i= 0; i < btnsFilter.length; i++){
+        btnsFilter[i].addEventListener("click", e =>{
+            e.preventDefault();
+
+            const filter = e.target.dataset.filter
+            //console.log(filter)
+            productos.forEach(producto =>{
+                //console.log(producto.dataset.grupoFiltro)
+                if(filter === "todos"){
+                    producto.classList.toggle("mostrar") 
+                    //console.log(producto.classList)
+                }else{
+                    if(producto.dataset.grupoFiltro === filter){
+                        producto.classList.toggle("mostrar") 
+                        //console.log("hola")
+                        
+                    }else{
+                        producto.classList.toggle("esconder") 
+                        //console.log("adios")
+                    }
+                }
+            })
+        })
+    }
 }
 
 //Función que suma 1 libra a los productos catalogados en KG desde el .JSON
