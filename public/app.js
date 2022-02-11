@@ -4,8 +4,6 @@ const fragment = document.createDocumentFragment();
 
 document.addEventListener("DOMContentLoaded", ()=>{
     fetchData();
-
-    
 }) 
 
 //Función que solicita informacion del db.json
@@ -57,18 +55,20 @@ const filterProducts = ()=>{
 
             const filter = e.target.dataset.filter
             //console.log(filter)
+            //debugger;
             productos.forEach(producto =>{
                 //console.log(producto.dataset.grupoFiltro)
+                producto.classList.remove("esconder") 
                 if(filter === "todos"){
-                    producto.classList.toggle("mostrar") 
+                    producto.classList.add("mostrar") 
                     //console.log(producto.classList)
                 }else{
                     if(producto.dataset.grupoFiltro === filter){
-                        producto.classList.toggle("mostrar") 
+                        producto.classList.add("mostrar") 
                         //console.log("hola")
                         
                     }else{
-                        producto.classList.toggle("esconder") 
+                        producto.classList.add("esconder") 
                         //console.log("adios")
                     }
                 }
