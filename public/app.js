@@ -48,31 +48,35 @@ const pintarCards = data =>{
 const filterProducts = ()=>{
     const btnsFilter = document.querySelectorAll(".btn");
     const productos = document.querySelectorAll(".producto");
-    
+
     for( i= 0; i < btnsFilter.length; i++){
         btnsFilter[i].addEventListener("click", e =>{
             e.preventDefault();
-
             const filter = e.target.dataset.filter
             //console.log(filter)
-            //debugger;
-            productos.forEach(producto =>{
-                //console.log(producto.dataset.grupoFiltro)
-                producto.classList.remove("esconder") 
+            
+            productos.forEach(producto=>{
                 if(filter === "todos"){
+                    
                     producto.classList.add("mostrar") 
                     //console.log(producto.classList)
+                    console.log(filter)
+
                 }else{
-                    if(producto.dataset.grupoFiltro === filter){
-                        producto.classList.add("mostrar") 
-                        //console.log("hola")
+                    if(producto.dataset.grupoFiltro !== filter){
+                        producto.classList.remove("mostrar") 
+                        producto.classList.add("hidden") 
+                        //console.log(producto.dataset.grupoFiltro)
                         
                     }else{
-                        producto.classList.add("esconder") 
+                        producto.classList.remove("mostrar") 
+                        producto.classList.remove("hidden") 
                         //console.log("adios")
+                        
                     }
                 }
             })
+        
         })
     }
 }
