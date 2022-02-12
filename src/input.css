@@ -6,10 +6,6 @@
 
 @layer utilities{
 
-    .esconder{
-        display: none;
-    }
-
     .mostrar{
         display: block;
     }

@@ -1,0 +1,23 @@
+.circle::after{
+    content: '';
+    position: relative;
+    bottom: 5px;
+    right: 5px;
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+
+
+.basket-number{
+    font-size: .9rem;
+    position: relative;
+    bottom: 8.704px;
+    left: 29.5px;
+    z-index: 9999;
+}
+
+.swal-overlay {
+    background-color: rgba(181, 168, 100, 0.45);
+  }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mystyles.css">
     <title>MiMercadito</title>
 </head>
 <body>
@@ -19,7 +20,8 @@
         </div>
 
         <!--Carrito de compras-->
-        <div class="flex">
+        <div class="flex circle">
+            <div id="basketNumber" class="basket-number">0</div>
             <img src="../public/assets/svg/basket.svg" alt="Canasta de compras">
             <i class="fas fa-ellipsis-v  p-4  md:hidden"></i>
         </div>
@@ -60,10 +62,9 @@
             </div>
             
             <div class="flex  flex-nowrap  flex-col  yellow-card  rounded-b-xl">
-                <!--Nombre del producto -->    
-                <h2 id="titulo-card" class="m-auto  mt-4  font-roboto  text-lg  font-medium">Costillas de Res</h2>
-                
+                <!--Nombre del producto -->     
                 <div class="flex flex-col  mt-2">
+                    <h2 id="titulo-card" class="m-auto  mt-3 mb-4 font-roboto  text-lg  font-medium">Costillas de Res</h2>
                     <!--información del producto-->
                     <div class="grid  grid-cols-2  content-center">
                         <p class="text-center  font-roboto">Antes</p>
@@ -80,8 +81,8 @@
                         <button id="btn-increased"><img src="../public/assets/svg/add.svg" alt="Más"></button>
                     </div>
                     
-                    <!--Botón para agragar al carrito-->
-                    <button class= "max-w-xl  bg-orangeBasket  text-white  rounded-xl  font-roboto  m-auto  p-1.5  mt-6  mb-3">Agregar al carrito</button>
+                    <!--Botón para agregar al carrito-->
+                    <button class= "btn-comprar max-w-xl  bg-orangeBasket  text-white  rounded-xl  font-roboto  m-auto  p-1.5  mt-6  mb-3">Agregar al carrito</button>
                 </div>
 
             </div>
@@ -89,7 +90,8 @@
     </template>
 
     <!--Aqui terminan las tarjetas de productos -->
-
+ 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
