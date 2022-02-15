@@ -4,16 +4,15 @@ let pseudoNumber =  document.getElementById("basketNumber");
 const templateCards = document.getElementById("template-cards").content;
 const fragment = document.createDocumentFragment();
 //Este array esta enfocado a ser dinámico en funcion de lo que el cliente vaya agregando desde el DOM
-let productosComprados = [];    
+let productosComprados = []; 
     
-
 document.addEventListener("DOMContentLoaded", ()=>{
     fetchData();
     cards.addEventListener("click", e =>{
         addCarrito(e);
-        numberCarrito();
     })
-}) 
+    setLocalStorage();
+})
 
 //Función que solicita informacion del db.json
 const fetchData = async()=>{
@@ -30,7 +29,6 @@ const fetchData = async()=>{
         console.log(error);
     }
 }
-
 
 //Funcion que usa la info de db.json para renderizar en pantalla la data
 const pintarCards = data =>{
@@ -169,16 +167,20 @@ const setCarrito = productos =>{
             nombre: productos.querySelector('h2').textContent,
             precio: productos.querySelector('#precio-ahora').textContent,
             cantidad: parseFloat(productos.querySelector('#cantidadProducto').textContent),
-            unidad: productos.querySelector('#unidades').textContent,
-            
+            unidad: productos.querySelector('#unidades').textContent
         }
         //aqui se valida si el producto ya existe en el array productosComprados
         if(productosComprados.hasOwnProperty(producto.id)){
             producto.cantidad = parseFloat(productosComprados[producto.id].cantidad) + parseFloat(producto.cantidad) 
+        }else{
+            //Esta función setea el localStorage cuando el producto no existe en el array productosComprados
+            numberCarrito();
         }
+        //Esta linea resetea la cantidad de la card en el DOM
         productos.querySelector('#cantidadProducto').textContent = 0;
         //esta linea agrega el objeto al array productosComprados
-        productosComprados[producto.id] = {...producto}
+        productosComprados[producto.id] = {...producto};
+        console.log(productosComprados)
 
 
     }else{
@@ -192,20 +194,29 @@ const setCarrito = productos =>{
     }
 }
 
-// continuamos...
-numberCarrito = ()=>{
+////Esta función setea el localStorage cuando el producto no existe en el array productosComprados
+const numberCarrito = ()=>{
+    let pseudoNumberStorage = pseudoNumber.textContent
+    let resultado = parseInt(pseudoNumberStorage) + 1
+    pseudoNumber.textContent = resultado
+    localStorage.setItem("#productosComprados",resultado);
+}
 
-    let parsePseudoNumber = parseInt(pseudoNumber.textContent)
-    let result = parsePseudoNumber + 1;
-    console.log(result)
-};
-
-
-
-
-
-
-
+//Esta funcion se ejecuta a la carga del DOM para recuperar los datos del localStorage
+const setLocalStorage = () =>{
+    let valueLocalStorage = JSON.parse(localStorage.getItem("#productosComprados"));
+    switch (valueLocalStorage){
+        case NaN:
+            pseudoNumber.textContent = 0
+        break;
+        case null:
+            pseudoNumber.textContent = 0
+        break;
+        default:
+            pseudoNumber.textContent = valueLocalStorage;
+        break;
+    }
+}
 
 // Función que retorna el total de la cantidad comprada por el cliente:
 const cantidadTotal = ()=>{
