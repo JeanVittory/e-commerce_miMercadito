@@ -58,11 +58,10 @@ const filterProducts = ()=>{
     const btnsFilter = document.querySelectorAll(".btn");
     const productos = document.querySelectorAll(".producto");
 
-    for( i= 0; i < btnsFilter.length; i++){
-        btnsFilter[i].addEventListener("click", e =>{
+    for(let i of btnsFilter){
+        i.addEventListener("click", e =>{
             e.preventDefault();
             const filter = e.target.dataset.filter;
-            
             productos.forEach(producto=>{
                 if(filter === "todos"){
                     producto.classList.add("mostrar"); 
@@ -76,8 +75,18 @@ const filterProducts = ()=>{
                     }
                 }
             })
+            selectedCategories(e);
         })
     }
+}
+
+//Esta funcion alterna las clases para referenciar el filtro seleccionado por el usuario. El inicio predeterminado es la pestaña "TODOS"
+const selectedCategories = e =>{
+    const btns = document.querySelectorAll(".btn");
+    for(let a of btns){
+        e.target.classList.replace("unselected-category", "selected-category");
+        a.classList.replace("selected-category", "unselected-category");
+    }   
 }
 
 //Función que suma 1 libra a los productos catalogados en KG desde el .JSON
@@ -240,8 +249,3 @@ const granTotal = ()=>{
     const granTotal = parseFloat(parseFloat(subTotal())) + parseFloat(ivaCalculado());
     return granTotal.toFixed(3);
 }
-    
-    
-    
-
-

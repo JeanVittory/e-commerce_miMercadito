@@ -18,6 +18,27 @@
     z-index: 9999;
 }
 
+@media screen and (max-width:767px){
+    .circle::after{
+        content: '';
+        position: relative;
+        bottom: -9px;
+        right: 42px;
+        background-color: red;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+    }
+
+    .basket-number{
+        font-size: .9rem;
+        position: relative;
+        bottom: -5px;
+        left: 31px;
+        z-index: 9999;
+    }
+}
+
 .swal-overlay {
     background-color: rgba(0, 0, 0, 0.607);
 }
