@@ -9,6 +9,7 @@ module.exports = {
         bg: '#ffffff',
         logo: '#A44005',
         bgPurchSummary: '#FFEFD0',
+        bgBuyBtn: '#ff6f6f',
         addCarrito: '#FF7A00',
         orangeBasket: '#FB8500',
         redNumberBasket: '#F10000',

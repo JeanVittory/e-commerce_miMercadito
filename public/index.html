@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="mystyles.css">
+    <link rel="stylesheet" href="css/mystyles.css">
     <title>MiMercadito</title>
 </head>
 <body>
@@ -19,18 +20,19 @@
         </div>
 
         <!--Carrito de compras-->
-        <div class="flex circle  md:cursor-pointer">
+        <div class="flex circle sm:mr-5  md:ml-6  l  md:cursor-pointer">
             <div id="basketNumber" class="basket-number">0</div>
             <img src="../public/assets/svg/basket.svg" alt="Canasta de compras">
-            <i class="fas fa-ellipsis-v  p-4  md:hidden"></i>
         </div>
 
         <!--Navegación a otras paginas del sitio web-->
        
-        <nav class="hidden  md:block">
-            <a class="button-nav  font-medium" href="">Inicio</a>
-            <a class="button-nav" href="">FAQS</a>
-            <a class="button-nav" href="">Contacto</a>
+        <nav id="navContainer">
+            <button id="btnComprar" class="btn-buy-disable  text-white  p-2  rounded-lg  inline-block  mx-2  lg:justify-around  lg:mx-0  cursor-auto  lg:cursor-pointer"><a class="anchorEndBuy" href="#">Comprar</a></button>
+            <i class="fas fa-ellipsis-v   md:hidden"></i>
+            <a class="button-nav  font-medium  hidden  md:inline-block" href="">Inicio</a>
+            <a class="button-nav  hidden  md:inline-block" href="">FAQS</a>
+            <a class="button-nav  hidden  md:inline-block" href="">Contacto</a>
         </nav>
     </header>
 
@@ -89,8 +91,8 @@
     </template>
 
     <!--Aqui terminan las tarjetas de productos -->
- 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="app.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="indexApp.js"></script>
 </body>
 </html>
