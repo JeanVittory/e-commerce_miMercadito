@@ -1,13 +1,12 @@
 const cards = document.getElementById("cards");
 const cantidadProducto = document.getElementById("cantidadProducto");
 const navContainer = document.getElementById("navContainer");
-
-let pseudoNumber =  document.getElementById("basketNumber");
+let basketNumber =  document.getElementById("basketNumber");
 const templateCards = document.getElementById("template-cards").content;
 const fragment = document.createDocumentFragment();
 
 //Este array esta enfocado a ser dinámico en funcion de lo que el cliente vaya agregando desde el DOM
-let productosComprados= []; 
+let productosComprados= {}; 
 
 document.addEventListener("DOMContentLoaded", e => {
     fetchData();
@@ -15,27 +14,10 @@ document.addEventListener("DOMContentLoaded", e => {
         addCarrito(e);
     })
     navContainer.addEventListener("click", e =>{
-        btnAlertDisabled(e)
+        btnAlertDisabled(e);
     })
-    setLocalStorage();
+    getLocalStorage();
 })
-
-const btnAlertDisabled = e => {
-    if(e.target.classList.contains("anchorEndBuy")){
-        Toastify({
-            text: "Debes ingresar un producto a la canasta",
-            duration: 3000,
-            close: false,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-              background: "linear-gradient(to right, #FF4848, #f5ac6d)",
-            },
-            onClick: function(){} // Callback after click
-          }).showToast();
-    }
-}
 
 //Función que solicita informacion del db.json
 const fetchData = async()=>{
@@ -76,6 +58,24 @@ const pintarCards = data =>{
     cards.appendChild(fragment);
 }
 
+//Esta funcion dispara la alerta si el usuario intenta finalizar una compra sin agregar ningún producto al carrito
+const btnAlertDisabled = e => {
+    if(e.target.classList.contains("anchorEndBuy")){
+        Toastify({
+            text: "Debes ingresar un producto a la canasta",
+            duration: 3000,
+            close: false,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #FF4848, #f5ac6d)",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
+    }
+}
+
 //Esta funcion filtra los productos segun los data attributes seteados en el html y en la linea 31
 const filterProducts = ()=>{
     const btnsFilter = document.querySelectorAll(".btn");
@@ -86,17 +86,17 @@ const filterProducts = ()=>{
             e.preventDefault();
             const filter = e.target.dataset.filter;
             productos.forEach(producto=>{
-                if(filter === "todos"){
-                    producto.classList.add("mostrar"); 
-                }else{
-                    if(producto.dataset.grupoFiltro !== filter){
-                        producto.classList.remove("mostrar"); 
-                        producto.classList.add("hidden"); 
-                    }else{
-                        producto.classList.remove("mostrar"); 
-                        producto.classList.remove("hidden"); 
-                    }
-                }
+                filter === "todos" ? (
+                    producto.classList.add("mostrar") 
+                ):(
+                    producto.dataset.grupoFiltro !== filter ? (
+                        producto.classList.remove("mostrar"), 
+                        producto.classList.add("hidden") 
+                    ):(
+                        producto.classList.remove("mostrar"), 
+                        producto.classList.remove("hidden") 
+                    )
+                )
             })
             selectedCategories(e);
         })
@@ -122,9 +122,7 @@ const sumarCantidadesKg = ()=>{
             const quantityBtnIncreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnIncreased}]`);
             const valueIncreased = parseFloat(quantityBtnIncreased.innerHTML);
             //Aqui se valida el tipo de unidad de peso, si el producto esta en KG se ejecuta la suma de 1 libra.
-            if(idUnidades === "Kg"){
-                quantityBtnIncreased.textContent = valueIncreased + 0.5; 
-            }
+            if(idUnidades === "Kg") quantityBtnIncreased.textContent = valueIncreased + 0.5; 
         })
     })  
 }
@@ -139,9 +137,7 @@ const restarCantidadesKg = ()=>{
             const quantityBtnDecreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnDecreased}]`);
             const valueDecreased = parseFloat(quantityBtnDecreased.innerHTML);
             if(idUnidades === "Kg"){
-                if(quantityBtnDecreased.textContent > 0){
-                    quantityBtnDecreased.textContent = valueDecreased - 0.5;
-                }
+                if(quantityBtnDecreased.textContent > 0) quantityBtnDecreased.textContent = valueDecreased - 0.5;
             }
         })
     })
@@ -156,9 +152,7 @@ const sumarCantidadesUnd = ()=>{
             const idUnidades = e.target.parentNode.dataset.unidades;
             const quantityBtnIncreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnIncreased}]`);
             const valueIncreased = parseInt(quantityBtnIncreased.innerHTML);
-            if(idUnidades === "Und"){
-                quantityBtnIncreased.textContent = valueIncreased + 1;
-            }
+            if(idUnidades === "Und") quantityBtnIncreased.textContent = valueIncreased + 1;
         })
     })
 }
@@ -173,9 +167,7 @@ const restarCantidadesUnd = ()=>{
             const quantityBtnDecreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnDecreased}]`);
             const valueDecreased = parseInt(quantityBtnDecreased.innerHTML);
             if(idUnidades === "Und"){
-                if(quantityBtnDecreased.textContent > 0){
-                    quantityBtnDecreased.textContent = valueDecreased - 1;
-                }
+                if(quantityBtnDecreased.textContent > 0) quantityBtnDecreased.textContent = valueDecreased - 1;
             }
         })
     })
@@ -183,14 +175,12 @@ const restarCantidadesUnd = ()=>{
 
 //esta funcion captura el elemento html que sera usado como constructor del objeto en setCarrito
 const addCarrito = e =>{
-     if(e.target.classList.contains("btn-comprar")){
-        setCarrito(e.target.parentElement)
-     }
-     e.stopPropagation()
+    if(e.target.classList.contains("btn-comprar")) setCarrito(e.target.parentElement)
+    e.stopPropagation()
 }
 
 //Esta función crea un objeto por cada producto comprado y lo agrega al array productoscomprados
-const setCarrito = productos =>{
+const setCarrito = productos => {
 
     //Aqui se valida de que el usuario no intente agregar un producto con cantidad 0
     if(productos.querySelector('#cantidadProducto').textContent !==  "0"){
@@ -202,16 +192,18 @@ const setCarrito = productos =>{
             unidad: productos.querySelector('#unidades').textContent
         }
         //aqui se valida si el producto ya existe en el array productosComprados
-        if(productosComprados.hasOwnProperty(producto.id)){
-            producto.cantidad = parseFloat(productosComprados[producto.id].cantidad) + parseFloat(producto.cantidad) 
-        }else{
+        productosComprados.hasOwnProperty(producto.id) ? (
+            producto.cantidad = parseFloat(productosComprados[producto.id].cantidad) + parseFloat(producto.cantidad)            
+        ):(
             //Esta función setea el localStorage cuando el producto no existe en el array productosComprados
-            numberCarrito();
-        }
+            numberCarrito()
+        )
         //Esta linea resetea la cantidad de la card en el DOM
         productos.querySelector('#cantidadProducto').textContent = 0;
         //esta linea agrega el objeto al array productosComprados
         productosComprados[producto.id] = {...producto};
+        //Esta linea guarda el carrito en el localStorage
+        localStorage.setItem("listaProductos", JSON.stringify(productosComprados));
     }else{
         //esta linea ejecuta la biblioteca sweetAlert en el caso de que el usuario intente agregar un producto con cantidad 0
         Toastify({
@@ -236,28 +228,31 @@ const numberCarrito = ()=>{
     if(btnComprar.classList.contains("btn-buy-disable")){
         btnComprar.classList.remove("btn-buy-disable");
         btnComprar.classList.add("btn-buy-able");
+        localStorage.setItem("btnClassActive", "btn-buy-able");
     }
-
-    let pseudoNumberStorage = pseudoNumber.textContent;
+    let pseudoNumberStorage = basketNumber.textContent;
     let resultado = parseInt(pseudoNumberStorage) + 1;
-    pseudoNumber.textContent = resultado;
-    localStorage.setItem("#productosComprados",resultado);
+    basketNumber.textContent = resultado;
+    localStorage.setItem("#productosComprados", resultado);
 }
 
 //Esta funcion se ejecuta a la carga del DOM para recuperar los datos del localStorage
-const setLocalStorage = () =>{
-    let valueLocalStorage = JSON.parse(localStorage.getItem("#productosComprados"));
-    switch (valueLocalStorage){
+const getLocalStorage = () =>{
+    let productsStorageQuantity = JSON.parse(localStorage.getItem("#productosComprados"));
+    let btnClassActive = localStorage.getItem("btnClassActive");
+    
+    switch (productsStorageQuantity){
         case NaN:
-            pseudoNumber.textContent = 0
+            basketNumber.textContent = 0
         break;
         case null:
-            pseudoNumber.textContent = 0
+            basketNumber.textContent = 0
         break;
         default:
-            pseudoNumber.textContent = valueLocalStorage;
+            basketNumber.textContent = productsStorageQuantity;
         break;
     }
+    if(productsStorageQuantity > 0) btnComprar.classList.add(btnClassActive);
 }
 
 

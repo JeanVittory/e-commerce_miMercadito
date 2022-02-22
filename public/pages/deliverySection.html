@@ -11,14 +11,13 @@
     <link rel="stylesheet" href="../css/mystyles.css">
     <title>MiMercadito - Finaliza tu compra</title>
 </head>
-<body>
+<body class="bg-bgDelivery">
     <header class="px-4  header">
         <!--Logo-->
         <div class="flex  items-center">
             <img src="../assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo">
             <h1 class="logo">MiMercadito</h1>
         </div>
-
 
         <!--Navegación a otras paginas del sitio web-->
        
@@ -29,6 +28,46 @@
             <a class="button-nav  hidden  md:inline-block" href="">Contacto</a>
         </nav>
     </header>
+
+    <section class="container mx-auto  mt-10 px-10">
+        <button class="bg-yellowBuyMore font-medium  p-1 px-2 rounded-2xl  shadow-bar font-roboto"><a href="../index.html">Seguir comprando</a></button>
+        
+        <article class="mt-8 grid grid-cols-5">
+            <form class="grid grid-cols-3 gap-y-2  col-span-4" action="" >
+                <label class="font-roboto font-medium" for="name">Nombre:</label>
+                <label class="font-roboto font-medium" for="lastname">Apellido:</label>
+                <label class="font-roboto font-medium" for="payment">Método de pago:</label>
+                <input class="w-9/12 font-roboto rounded-lg  shadow-bar  text-center" id="name" type="text" name="name">
+                <input class="w-9/12 font-roboto rounded-lg  shadow-bar  text-center" id="lastname" type="text" name="lastname">
+                <select class="w-9/12 font-roboto rounded-lg  shadow-bar text-center" name="payment" id="payment" name="payment">
+                    <option value="efectivo">Efectivo</option>
+                    <option value="credito">Tarjeta de crédito</option>
+                    <option value="debito">Tarjeta de débito</option>
+                </select>
+                <label class="font-roboto font-medium mt-4" for="phone">Teléfono:</label>
+                <label class="font-roboto font-medium mt-4" for="address">Dirección de envío:</label><br>
+                <input class="w-9/12 font-roboto rounded-lg  shadow-bar  text-center" id="phone" type="tel" name="phone">
+                <input class="w-9/12 font-roboto rounded-lg  shadow-bar  text-center" id="address" type="text" name="address">
+
+                <button class="w-2/4  font-medium bg-redBtnEnviar  text-white  p-1 px-2 rounded-2xl  shadow-bar  font-roboto" type="submit">¡Enviamelo!</button>
+            </form>
+            <section class="grid grid-cols-2  justify-items-center py-4 bg-bgPurchSummary rounded-lg  shadow-bar">
+                <h2 class="font-roboto text-sm">Subtotal</h2>
+                <p class="font-roboto text-sm">$140.000</p>
+                <h2 class="font-roboto text-sm">IVA(19%)</h2>
+                <p class="font-roboto text-sm">$26.600</p>
+                <h2 class="font-roboto text-sm">Envío</h2>
+                <p class="font-roboto text-sm">$0</p>
+                <h2 class="font-roboto text-sm  font-medium">Total</h2>
+                <p class="font-roboto text-sm">$166.600</p>
+            </section>
+        </article>
+    </section>
+
+    <section>
+        <h2>¡Tu compra ha sido despachada con éxito, vuelve pronto!</h2>
+        <img src="../assets/svg/route-path-svgrepo-com 1.svg" alt="Envio exitoso">
+    </section>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="app.js"></script>
