@@ -23,17 +23,23 @@
        
         <nav id="navContainer">
             <i class="fas fa-ellipsis-v   md:hidden"></i>
-            <a class="button-nav  font-medium  hidden  md:inline-block" href="">Inicio</a>
-            <a class="button-nav  hidden  md:inline-block" href="">FAQS</a>
-            <a class="button-nav  hidden  md:inline-block" href="">Contacto</a>
+            <a class="button-nav  font-medium  hidden  md:inline-block  cursor-auto lg:cursor-pointer" href="">Inicio</a>
+            <a class="button-nav  hidden  md:inline-block  cursor-auto lg:cursor-pointer" href="">FAQS</a>
+            <a class="button-nav  hidden  md:inline-block  cursor-auto lg:cursor-pointer" href="">Contacto</a>
         </nav>
     </header>
 
-    <section class="container mx-auto  mt-10 px-10">
+    <section id="section-products" class="container mx-auto mt-12">
+        <ul class="grid grid-cols-4  justify-items-center mb-2">
+            <li class="font-roboto  text-center  font-medium mb-2">Item</li><li class="font-roboto  text-center  font-medium mb-2">Producto</li><li class="font-roboto  text-center  font-medium mb-2">Cantidad</li><li class="font-roboto  text-center  font-medium mb-2">Precio</li>
+        </ul>    
+    </section>
+
+    <section class="container mx-auto mt-36 px-8">
         <button class="bg-yellowBuyMore font-medium  p-1 px-2 rounded-2xl  shadow-bar font-roboto"><a href="../index.html">Seguir comprando</a></button>
         
-        <article class="mt-8 grid grid-cols-5">
-            <form class="grid grid-cols-3 gap-y-2  col-span-4" action="" >
+        <article class="mt-8">
+            <form class="grid grid-cols-3 gap-y-2  justify-items-center" action="" >
                 <label class="font-roboto font-medium" for="name">Nombre:</label>
                 <label class="font-roboto font-medium" for="lastname">Apellido:</label>
                 <label class="font-roboto font-medium" for="payment">Método de pago:</label>
@@ -51,25 +57,40 @@
 
                 <button class="w-2/4  font-medium bg-redBtnEnviar  text-white  p-1 px-2 rounded-2xl  shadow-bar  font-roboto" type="submit">¡Enviamelo!</button>
             </form>
-            <section class="grid grid-cols-2  justify-items-center py-4 bg-bgPurchSummary rounded-lg  shadow-bar">
-                <h2 class="font-roboto text-sm">Subtotal</h2>
-                <p class="font-roboto text-sm">$140.000</p>
-                <h2 class="font-roboto text-sm">IVA(19%)</h2>
-                <p class="font-roboto text-sm">$26.600</p>
-                <h2 class="font-roboto text-sm">Envío</h2>
-                <p class="font-roboto text-sm">$0</p>
-                <h2 class="font-roboto text-sm  font-medium">Total</h2>
-                <p class="font-roboto text-sm">$166.600</p>
-            </section>
         </article>
     </section>
 
-    <section>
-        <h2>¡Tu compra ha sido despachada con éxito, vuelve pronto!</h2>
+    <section class="mt-28 flex flex-col  justify-center  items-center">
+        <h2 class="font-roboto font-medium mb-8">¡Tu compra ha sido despachada con éxito, vuelve pronto!</h2>
         <img src="../assets/svg/route-path-svgrepo-com 1.svg" alt="Envio exitoso">
     </section>
 
+    <template id="template-products">
+        <div>
+            <ul class="grid grid-cols-4  justify-items-center mb-1">
+                <li class="mb-2  font-roboto  text-center flex  flex-row  flex-nowrap"><img class="w-5 ml-3  cursor-auto lg:cursor-pointer" src="../assets/svg/trash-svgrepo-com (1).svg" alt="Borrar"><img class="ml-3  cursor-auto lg:cursor-pointer" src="../assets/svg/add.svg" alt="Agregar"><img class="ml-3  cursor-auto lg:cursor-pointer" src="../assets/svg/less.svg" alt=""></li><li id="product" class="mb-2  font-roboto  text-center ">Carne de Res</li>
+                <div class="grid grid-cols-2 justify-items-center">
+                    <li id="quantity" class="mb-2  font-roboto  text-center ">4</li><p id="type" class="mb-2  font-roboto  text-center">Kg</p>
+                </div>
+                <li id="price" class="mb-2  font-roboto  text-center ">2000</li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="template-bill">
+        <section class="float-right mt-8 w-2/6  grid grid-cols-2  justify-items-center py-4 bg-bgPurchSummary rounded-lg  shadow-bar">
+            <h2 class="font-roboto text-sm">Subtotal</h2>
+            <p class="font-roboto text-sm">$140.000</p>
+            <h2 class="font-roboto text-sm">IVA(19%)</h2>
+            <p class="font-roboto text-sm">$26.600</p>
+            <h2 class="font-roboto text-sm">Envío</h2>
+            <p class="font-roboto text-sm">$0</p>
+            <h2 class="font-roboto text-sm  font-medium">Total</h2>
+            <p class="font-roboto text-sm">$166.600</p>
+        </section>
+    </template>
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="app.js"></script>
+    <script src="deliveryApp.js"></script>
 </body>
 </html>
