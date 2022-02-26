@@ -34,6 +34,9 @@
             <li class="font-roboto  text-center  font-medium mb-2">Item</li><li class="font-roboto  text-center  font-medium mb-2">Producto</li><li class="font-roboto  text-center  font-medium mb-2">Cantidad</li><li class="font-roboto  text-center  font-medium mb-2">Precio</li>
         </ul>    
     </section>
+    <section id="section-bill" class="container mx-auto">
+
+    </section>
 
     <section class="container mx-auto mt-36 px-8">
         <button class="bg-yellowBuyMore font-medium  p-1 px-2 rounded-2xl  shadow-bar font-roboto"><a href="../index.html">Seguir comprando</a></button>
@@ -66,11 +69,17 @@
     </section>
 
     <template id="template-products">
-        <div>
+        <div id="productToDelete">
             <ul class="grid grid-cols-4  justify-items-center mb-1">
-                <li class="mb-2  font-roboto  text-center flex  flex-row  flex-nowrap"><img class="w-5 ml-3  cursor-auto lg:cursor-pointer" src="../assets/svg/trash-svgrepo-com (1).svg" alt="Borrar"><img class="ml-3  cursor-auto lg:cursor-pointer" src="../assets/svg/add.svg" alt="Agregar"><img class="ml-3  cursor-auto lg:cursor-pointer" src="../assets/svg/less.svg" alt=""></li><li id="product" class="mb-2  font-roboto  text-center ">Carne de Res</li>
+                <li id="product-item" class="mb-2  font-roboto  text-center flex  flex-row  flex-nowrap items-center  content-center justify-center">
+                    <img id="btn-delete" class="mx-1 w-5  cursor-auto lg:cursor-pointer" src="../assets/svg/trash-svgrepo-com (1).svg" alt="Borrar">
+                    <img id="btn-add" class="mx-1  cursor-auto lg:cursor-pointer" src="../assets/svg/add.svg" alt="Agregar">
+                    <img id="btn-less" class="mx-1  cursor-auto lg:cursor-pointer" src="../assets/svg/less.svg" alt="restar">
+                </li>
+                <li id="product" class="mb-2  font-roboto  text-center ">Carne de Res</li>
                 <div class="grid grid-cols-2 justify-items-center">
-                    <li id="quantity" class="mb-2  font-roboto  text-center ">4</li><p id="type" class="mb-2  font-roboto  text-center">Kg</p>
+                    <li id="quantity" class="quantity mb-2  font-roboto  text-center ">4</li>
+                    <p id="type" class="mb-2  font-roboto  text-center">Kg</p>
                 </div>
                 <li id="price" class="mb-2  font-roboto  text-center ">2000</li>
             </ul>
@@ -78,19 +87,19 @@
     </template>
 
     <template id="template-bill">
-        <section class="float-right mt-8 w-2/6  grid grid-cols-2  justify-items-center py-4 bg-bgPurchSummary rounded-lg  shadow-bar">
+        <div class="float-right mt-8 w-2/6  grid grid-cols-2  justify-items-center py-4 bg-bgPurchSummary rounded-lg  shadow-bar">
             <h2 class="font-roboto text-sm">Subtotal</h2>
-            <p class="font-roboto text-sm">$140.000</p>
-            <h2 class="font-roboto text-sm">IVA(19%)</h2>
-            <p class="font-roboto text-sm">$26.600</p>
+            <p id="subTotal" class="font-roboto text-sm">$140.000</p>
+            <h2 class="font-roboto text-sm">IVA (19%)</h2>
+            <p id="iva" class="font-roboto text-sm">$26.600</p>
             <h2 class="font-roboto text-sm">Envío</h2>
             <p class="font-roboto text-sm">$0</p>
             <h2 class="font-roboto text-sm  font-medium">Total</h2>
-            <p class="font-roboto text-sm">$166.600</p>
-        </section>
+            <p id="total" class="font-roboto text-sm">$166.600</p>
+        </div>
     </template>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="deliveryApp.js"></script>
+    <script src="deliveryApp.js" type="module"></script>
 </body>
 </html>

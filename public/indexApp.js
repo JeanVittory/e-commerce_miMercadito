@@ -6,7 +6,7 @@ const templateCards = document.getElementById("template-cards").content;
 const fragment = document.createDocumentFragment();
 
 //Este array esta enfocado a ser dinámico en funcion de lo que el cliente vaya agregando desde el DOM
-let productosComprados= {}; 
+let productosComprados= JSON.parse(localStorage.getItem("listaProductos")) || {}; 
 
 document.addEventListener("DOMContentLoaded", e => {
     fetchData();
@@ -127,6 +127,7 @@ const sumarCantidadesKg = ()=>{
     })  
 }
 
+
 //Función que resta 1 libra a los productos catalogados en KG desde el .JSON
 const restarCantidadesKg = ()=>{
     const btnsDecreased = document.querySelectorAll("#btn-less")
@@ -175,7 +176,9 @@ const restarCantidadesUnd = ()=>{
 
 //esta funcion captura el elemento html que sera usado como constructor del objeto en setCarrito
 const addCarrito = e =>{
-    if(e.target.classList.contains("btn-comprar")) setCarrito(e.target.parentElement)
+    if(e.target.classList.contains("btn-comprar")){
+        setCarrito(e.target.parentElement);
+    } 
     e.stopPropagation()
 }
 
@@ -204,6 +207,18 @@ const setCarrito = productos => {
         productosComprados[producto.id] = {...producto};
         //Esta linea guarda el carrito en el localStorage
         localStorage.setItem("listaProductos", JSON.stringify(productosComprados));
+        Toastify({
+            text: "Se ha agregado el producto",
+            duration: 3000,
+            close: false,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #8711c1, #2472fc)",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
     }else{
         //esta linea ejecuta la biblioteca sweetAlert en el caso de que el usuario intente agregar un producto con cantidad 0
         Toastify({
@@ -224,11 +239,19 @@ const setCarrito = productos => {
 ////Esta función setea el localStorage cuando el producto no existe en el array productosComprados y aumenta el numero en el carrito
 const numberCarrito = ()=>{
     const btnComprar = document.getElementById('btnComprar');
+    const anchorEndBuy = document.getElementById('anchorEndBuy')
     //Esta linea habilita visualmente el boton "comprar" 
     if(btnComprar.classList.contains("btn-buy-disable")){
         btnComprar.classList.remove("btn-buy-disable");
+        btnComprar.classList.remove("btn-buy-disable");
         btnComprar.classList.add("btn-buy-able");
         localStorage.setItem("btnClassActive", "btn-buy-able");
+    }
+
+    if(anchorEndBuy.classList.contains("anchorEndBuy")){
+        anchorEndBuy.classList.remove("anchorEndBuy")
+        anchorEndBuy.setAttribute("href", "./pages/deliverySection.html")
+        localStorage.setItem("hrefDelivery", "./pages/deliverySection.html")
     }
     let pseudoNumberStorage = basketNumber.textContent;
     let resultado = parseInt(pseudoNumberStorage) + 1;
@@ -252,7 +275,12 @@ const getLocalStorage = () =>{
             basketNumber.textContent = productsStorageQuantity;
         break;
     }
-    if(productsStorageQuantity > 0) btnComprar.classList.add(btnClassActive);
+
+    if(productsStorageQuantity > 0){
+        btnComprar.classList.add(btnClassActive);
+        anchorEndBuy.setAttribute("href", "./pages/deliverySection.html")
+        anchorEndBuy.classList.remove("anchorEndBuy")
+    } 
 }
 
 
@@ -275,6 +303,7 @@ const cantidadTotal = ()=>{
     const sumaCantidades = productosComprados.reduce((acc, {cantidad}) => acc + cantidad , 0);
     return sumaCantidades;
 };
+
 //Función que retorna el subtotal de lo comprado por el cliente:
 const subTotal = () =>{
     const sumaTotal = productosComprados.reduce((acc, {precio, cantidad}) => acc + precio*cantidad, 0);
