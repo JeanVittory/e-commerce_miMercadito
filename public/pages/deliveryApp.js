@@ -2,9 +2,10 @@
 
 const templateProducts = document.getElementById("template-products").content;
 const templateBill = document.getElementById("template-bill").content;
-//const templateListHeader = document.getElementById("template-list-Header").content
 const sectionProducts = document.getElementById("section-products");
 const sectionBill = document.getElementById("section-bill");
+const bill = document.getElementById("bill")
+const form = document.getElementById("form")
 let productsCart = JSON.parse(localStorage.getItem("listaProductos"));
 let quantityCart = JSON.parse(localStorage.getItem("#productosComprados"));
 const fragment = document.createDocumentFragment();
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", e =>{
     restarCantidadesKg();
     sumarCantidadesUnd();
     restarCantidadesUnd();
+    deleteProducts();
+    validationForm();
 })
 
 const renderProducts = () =>{
@@ -46,6 +49,7 @@ const sumarCantidadesKg = ()=>{
             if(idUnidades === "Kg") quantityBtnIncreased.textContent = valueIncreased + 0.5; 
             productsCart[idBtnIncreased].cantidad = quantityBtnIncreased.textContent;
             localStorage.setItem("listaProductos", JSON.stringify(productsCart));
+            updateBill();
         })
     })  
 }
@@ -73,8 +77,28 @@ const restarCantidadesKg = ()=>{
             };
             localStorage.setItem("#productosComprados", quantityCart);
             localStorage.setItem("listaProductos", JSON.stringify(productsCart));
+            updateBill();
         })
     })  
+}
+
+const deleteProducts = () =>{
+    const btnsDelete = document.querySelectorAll("#btn-delete");
+    btnsDelete.forEach(btn =>{
+        btn.addEventListener("click", e =>{
+            const idBtnDelete = e.target.parentNode.dataset.id;
+            const productToDelete = document.querySelector(`#productToDelete[data-delete-Id=id${idBtnDelete}]`);
+            if(e.target){
+                sectionProducts.removeChild(productToDelete)
+                delete productsCart[idBtnDelete];
+                quantityCart -= 1;
+                localStorage.setItem("#productosComprados", quantityCart);
+                localStorage.setItem("listaProductos", JSON.stringify(productsCart));
+                updateBill();
+            }
+            
+        })
+    })
 }
 
 const sumarCantidadesUnd = ()=>{   
@@ -83,13 +107,13 @@ const sumarCantidadesUnd = ()=>{
         btn.addEventListener("click", e =>{                     
             const idBtnIncreased = e.target.parentNode.dataset.id;
             const idUnidades = e.target.parentNode.dataset.unidades;
-            console.log(idUnidades)
             const quantityBtnIncreased = document.querySelector(`#quantity[data-quantity-Item=cantidad${idBtnIncreased}]`);
             const valueIncreased = parseFloat(quantityBtnIncreased.textContent);
             //Aqui se valida el tipo de unidad de peso, si el producto esta en Und se ejecuta la suma de 1 libra.
             if(idUnidades === "Und") quantityBtnIncreased.textContent = valueIncreased + 1; 
             productsCart[idBtnIncreased].cantidad = quantityBtnIncreased.textContent;
             localStorage.setItem("listaProductos", JSON.stringify(productsCart));
+            updateBill();
         })
     })  
 }
@@ -101,7 +125,7 @@ const restarCantidadesUnd = ()=>{
             const idBtnDecreased = e.target.parentNode.dataset.id;
             const idUnidades = e.target.parentNode.dataset.unidades;
             const quantityBtnDecreased = document.querySelector(`#quantity[data-quantity-Item=cantidad${idBtnDecreased}]`);
-            console.log(quantityBtnDecreased)
+            const productToDelete = document.querySelector(`#productToDelete[data-delete-Id=id${idBtnDecreased}]`);
             const valueDecreased = parseFloat(quantityBtnDecreased.textContent);
             //Aqui se valida el tipo de unidad de peso, si el producto esta en Und se ejecuta la suma de 1 libra.
             if(idUnidades === "Und"){
@@ -117,6 +141,7 @@ const restarCantidadesUnd = ()=>{
             };
             localStorage.setItem("#productosComprados", quantityCart);
             localStorage.setItem("listaProductos", JSON.stringify(productsCart));
+            updateBill();
         })
     })  
 }
@@ -142,8 +167,135 @@ const renderBill = () =>{
     templateBill.querySelector("#total").textContent = granTotal();
     const clone = templateBill.cloneNode(true);
     fragment.appendChild(clone);
-    sectionBill.appendChild(fragment)
+    sectionBill.appendChild(fragment);
+}
+
+const updateBill = () =>{
+    sectionBill.querySelector("#subTotal").textContent = subTotal();
+    sectionBill.querySelector("#iva").textContent = ivaCalculado();
+    sectionBill.querySelector("#total").textContent = granTotal();
 }
 
 
+const validationForm = () => {
+    const name = document.getElementById("name");
+    const lastName = document.getElementById("lastname");
+    const phone = document.getElementById("phone");
+    const address = document.getElementById("address");
+    const regExNumbers = /^[0-9]+$/;
+    const regExLetters = /^[a-zA-Z]+$/;
 
+    form.addEventListener("submit", e =>{
+        if(Object.keys(productsCart).length === 0){
+            e.preventDefault();
+            Toastify({
+                text: "No has ingresado ningún producto",
+                duration: 3000,
+                close: false,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #FF4848, #f5ac6d)",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+            return;
+        } 
+
+        if(!regExLetters.test(name.value) || name.value === null){
+            e.preventDefault()
+            name.style.border = "thick solid #ff7b7b"
+            Toastify({
+                text: "Debes ingresar un nombre valido",
+                duration: 3000,
+                close: false,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #FF4848, #f5ac6d)",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+            return;
+        }else{
+            name.style.border = "none";
+        } 
+        
+        if(!regExLetters.test(lastName.value)){
+            e.preventDefault()
+            lastName.style.border = "thick solid #ff7b7b"
+            Toastify({
+                text: "Debes ingresar un apellido valido",
+                duration: 3000,
+                close: false,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #FF4848, #f5ac6d)",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+            return;
+        }else{
+            lastName.style.border = "none";
+            
+        } 
+
+        if(!regExNumbers.test(phone.value)){
+            e.preventDefault()
+            phone.style.border = "thick solid #ff7b7b"
+            Toastify({
+                text: "Debes ingresar un teléfono valido",
+                duration: 3000,
+                close: false,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #FF4848, #f5ac6d)",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+            return;
+        }else{
+            phone.style.border = "none";
+           
+        }
+        
+        if(!regExLetters.test(address.value)){
+            e.preventDefault()
+            address.style.border = "thick solid #ff7b7b"
+            Toastify({
+                text: "Debes ingresar una dirección de envío",
+                duration: 3000,
+                close: false,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #FF4848, #f5ac6d)",
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
+            return;
+        }else{
+            address.style.border = "none";
+        }
+        e.preventDefault(); 
+        purchaseComplete();
+    })
+}
+
+const purchaseComplete = e =>{
+    localStorage.setItem("listaProductos", JSON.stringify(null));
+    localStorage.setItem("#productosComprados", JSON.stringify(0));
+    const purchaseComplete = document.getElementById("purchase-complete");
+    const sectionForm = document.getElementById("section-form");
+    sectionForm.style.display = "none";
+    sectionBill.style.display = "none";
+    sectionProducts.style.display = "none";
+    purchaseComplete.classList.replace("hidden", "flex");
+}

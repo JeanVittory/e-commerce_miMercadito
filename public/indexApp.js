@@ -72,7 +72,7 @@ const btnAlertDisabled = e => {
               background: "linear-gradient(to right, #FF4848, #f5ac6d)",
             },
             onClick: function(){} // Callback after click
-          }).showToast();
+        }).showToast();
     }
 }
 
