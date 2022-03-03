@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", e => {
 //Función que solicita informacion del db.json
 const fetchData = async()=>{
     try{
-        const res = await fetch('db.json');
+        const res = await fetch('public/db.json');
         const data = await res.json();
         pintarCards(data);
         sumarCantidadesKg();
