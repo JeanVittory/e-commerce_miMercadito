@@ -5,24 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/fontawesome.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="css/mystyles.css">
+    <link rel="stylesheet" href="public/css/all.min.css">
+    <link rel="stylesheet" href="public/css/fontawesome.min.css">
+    <link rel="stylesheet" href="public/styles.css">
+    <link rel="stylesheet" href="public/css/mystyles.css">
     <title>MiMercadito</title>
 </head>
 <body>
     <header class="px-4  header">
         <!--Logo-->
         <div class="flex  items-center">
-            <img src="../public/assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo">
+            <img src="public/assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo">
             <h1 class="logo">MiMercadito</h1>
         </div>
 
         <!--Carrito de compras-->
         <div class="flex circle sm:mr-5  md:ml-6  l  md:cursor-pointer">
             <div id="basketNumber" class="basket-number">0</div>
-            <img src="../public/assets/svg/basket.svg" alt="Canasta de compras">
+            <img src="public/assets/svg/basket.svg" alt="Canasta de compras">
         </div>
 
         <!--Navegación a otras paginas del sitio web-->
@@ -59,7 +59,7 @@
             <!--Imagen del producto -->
             <div class="shadow-card  z-50  rounded-t-xl">
                 <div id="dscto" class="absolute  bg-yellowDsc rounded-dsc p-2  font-roboto">-20%</div>
-                <img id="imgCards" class="max-h-min  rounded-t-xl" src="/public/assets/imgs/costillas.jpg" alt="">
+                <img id="imgCards" class="max-h-min  rounded-t-xl" src="public/assets/imgs/costillas.jpg" alt="">
             </div>
             
             <div class="flex  flex-nowrap  flex-col  yellow-card  rounded-b-xl">
@@ -76,10 +76,10 @@
                     
                     <!--Barra para agregar o quitar las cantidades a comprar-->
                     <div id="compras-box" class="id-gen  w-8/12  flex  flex-row  flex-nowrap  justify-between  white-bar  rounded-xl  px-2  m-auto  shadow-bar  mt-4">
-                        <button id="btn-less"><img src="../public/assets/svg/less.svg" alt="Menos"></button>
+                        <button id="btn-less"><img src="public/assets/svg/less.svg" alt="Menos"></button>
                         <p id="cantidadProducto" class="cantidadProducto">0</p>
                         <p id="unidades">Kg</p>
-                        <button id="btn-increased"><img src="../public/assets/svg/add.svg" alt="Más"></button>
+                        <button id="btn-increased"><img src="public/assets/svg/add.svg" alt="Más"></button>
                     </div>
                     
                     <!--Botón para agregar al carrito-->
@@ -93,6 +93,6 @@
     <!--Aqui terminan las tarjetas de productos -->
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="indexApp.js"></script>
+    <script src="public/indexApp.js"></script>
 </body>
 </html>
