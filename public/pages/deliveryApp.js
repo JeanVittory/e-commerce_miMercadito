@@ -1,5 +1,3 @@
-
-
 const templateProducts = document.getElementById("template-products").content;
 const templateBill = document.getElementById("template-bill").content;
 const sectionProducts = document.getElementById("section-products");
@@ -7,10 +5,14 @@ const sectionBill = document.getElementById("section-bill");
 const bill = document.getElementById("bill")
 const form = document.getElementById("form")
 let productsCart = JSON.parse(localStorage.getItem("listaProductos"));
+console.log(productsCart)
 let quantityCart = JSON.parse(localStorage.getItem("#productosComprados"));
 const fragment = document.createDocumentFragment();
 
 document.addEventListener("DOMContentLoaded", e =>{
+    if(productsCart === null){
+        purchaseComplete()
+    }
     renderProducts();
     renderBill();
     sumarCantidadesKg();
@@ -299,3 +301,5 @@ const purchaseComplete = e =>{
     sectionProducts.style.display = "none";
     purchaseComplete.classList.replace("hidden", "flex");
 }
+
+

@@ -43,3 +43,54 @@
     background-color: rgba(0, 0, 0, 0.607);
 }
 
+@media (min-width: 1024px) {
+
+    /* .grid-area{
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-areas:"grid-n grid-a grid-mp "
+                            "grid-nombre grid-apellido grid-metodo"
+                            "grid-t grid-de"
+                            "grid-telefono grid-direccion grid-enviamelo";
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .grid-n{
+        grid-area: n;
+    }
+
+    .grid-nombre{
+        grid-area: grid-nombre;
+    }
+
+    .grid-a{
+        grid-area: grid-a;
+    }
+    .grid-apellido{
+        grid-area: grid-apellido;
+    }
+    .grid-mp{
+        grid-area: grid-mp;
+    } 
+    .grid-metodo{
+        grid-area: grid-metodo;
+    }
+    .grid-t{
+        grid-area: grid-t;
+    }
+    .grid-telefono{
+        grid-area: grid-telefono;
+    }
+    .grid-de{
+        grid-area: grid-de;
+    }
+    .grid-direccion{
+        grid-area: grid-direccion;
+    }
+
+    .grid-enviamelo{
+        grid-area: grid-enviamelo;
+    } */
+ }
