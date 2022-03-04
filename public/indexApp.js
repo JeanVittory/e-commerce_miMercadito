@@ -278,7 +278,7 @@ const getLocalStorage = () =>{
 
     if(productsStorageQuantity > 0){
         btnComprar.classList.add(btnClassActive);
-        anchorEndBuy.setAttribute("href", "./pages/deliverySection.html")
+        anchorEndBuy.setAttribute("href", "public/pages/deliverySection.html")
         anchorEndBuy.classList.remove("anchorEndBuy")
     } 
 }
