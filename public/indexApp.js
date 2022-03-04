@@ -250,8 +250,8 @@ const numberCarrito = ()=>{
 
     if(anchorEndBuy.classList.contains("anchorEndBuy")){
         anchorEndBuy.classList.remove("anchorEndBuy")
-        anchorEndBuy.setAttribute("href", "./pages/deliverySection.html")
-        localStorage.setItem("hrefDelivery", "./pages/deliverySection.html")
+        anchorEndBuy.setAttribute("href", "/pages/deliverySection.html")
+        localStorage.setItem("hrefDelivery", "/pages/deliverySection.html")
     }
     let pseudoNumberStorage = basketNumber.textContent;
     let resultado = parseInt(pseudoNumberStorage) + 1;
