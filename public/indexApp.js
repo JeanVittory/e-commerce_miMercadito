@@ -4,8 +4,7 @@ const navContainer = document.getElementById("navContainer");
 let basketNumber =  document.getElementById("basketNumber");
 const templateCards = document.getElementById("template-cards").content;
 const fragment = document.createDocumentFragment();
-
-//Este array esta enfocado a ser dinámico en funcion de lo que el cliente vaya agregando desde el DOM
+// This array is focused on being dynamic depending on what the client adds from the DOM
 let productosComprados= JSON.parse(localStorage.getItem("listaProductos")) || {}; 
 
 document.addEventListener("DOMContentLoaded", e => {
@@ -19,10 +18,11 @@ document.addEventListener("DOMContentLoaded", e => {
     getLocalStorage();
 })
 
-//Función que solicita informacion del db.json
+//Function that requests information from the db.json
 const fetchData = async()=>{
     try{
-        const res = await fetch("https://raw.githubusercontent.com/JeanVittory/e-commerce_miMercadito/main/public/db.json");
+        //const res = await fetch("https://raw.githubusercontent.com/JeanVittory/e-commerce_miMercadito/main/public/db.json");
+        const res = await fetch("public/db.json");
         const data = await res.json();
         pintarCards(data);
         sumarCantidadesKg();
@@ -35,7 +35,8 @@ const fetchData = async()=>{
     }
 }
 
-//Funcion que usa la info de db.json para renderizar en pantalla la data
+
+//Function that uses the info from db.json to render the data on the screen
 const pintarCards = data =>{
     data.forEach(element => {
         templateCards.querySelector('article').dataset.grupoFiltro = element.Grupo;        
@@ -58,7 +59,7 @@ const pintarCards = data =>{
     cards.appendChild(fragment);
 }
 
-//Esta funcion dispara la alerta si el usuario intenta finalizar una compra sin agregar ningún producto al carrito
+//This function fires the alert if the user tries to complete a purchase without adding any product to the cart
 const btnAlertDisabled = e => {
     if(e.target.classList.contains("anchorEndBuy")){
         Toastify({
@@ -76,7 +77,8 @@ const btnAlertDisabled = e => {
     }
 }
 
-//Esta funcion filtra los productos segun los data attributes seteados en el html y en la linea 31
+
+//This function filters the products according to the data attributes set in the html and line 31
 const filterProducts = ()=>{
     const btnsFilter = document.querySelectorAll(".btn");
     const productos = document.querySelectorAll(".producto");
@@ -103,7 +105,8 @@ const filterProducts = ()=>{
     }
 }
 
-//Esta funcion alterna las clases para referenciar el filtro seleccionado por el usuario. El inicio predeterminado es la pestaña "TODOS"
+
+//This function toggles classes to reference the filter selected by the user. The default launch is the "ALL" tab
 const selectedCategories = e =>{
     const btns = document.querySelectorAll(".btn");
     for(let a of btns){
@@ -112,7 +115,7 @@ const selectedCategories = e =>{
     }   
 }
 
-//Función que suma 1 libra a los productos catalogados en KG desde el .JSON
+//Function that adds 1 pound to the products cataloged in KG from the .JSON
 const sumarCantidadesKg = ()=>{   
     const btnsIncreased = document.querySelectorAll("#btn-increased");
     btnsIncreased.forEach(btn=>{
@@ -121,14 +124,14 @@ const sumarCantidadesKg = ()=>{
             const idUnidades = e.target.parentNode.dataset.unidades;
             const quantityBtnIncreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnIncreased}]`);
             const valueIncreased = parseFloat(quantityBtnIncreased.innerHTML);
-            //Aqui se valida el tipo de unidad de peso, si el producto esta en KG se ejecuta la suma de 1 libra.
+            //Here the type of weight unit is validated, if the product is in KG, the sum of 1 pound is executed.
             if(idUnidades === "Kg") quantityBtnIncreased.textContent = valueIncreased + 0.5; 
         })
     })  
 }
 
 
-//Función que resta 1 libra a los productos catalogados en KG desde el .JSON
+//Function that subtracts 1 pound from the products cataloged in KG from the .JSON
 const restarCantidadesKg = ()=>{
     const btnsDecreased = document.querySelectorAll("#btn-less")
     btnsDecreased.forEach(btn =>{
@@ -137,6 +140,7 @@ const restarCantidadesKg = ()=>{
             const idUnidades = e.target.parentNode.dataset.unidades;
             const quantityBtnDecreased = document.querySelector(`#cantidadProducto[data-quantity=cantidad${idBtnDecreased}]`);
             const valueDecreased = parseFloat(quantityBtnDecreased.innerHTML);
+            //this validation was done because i want that the subtracts only work if the cart has more than 0 products
             if(idUnidades === "Kg"){
                 if(quantityBtnDecreased.textContent > 0) quantityBtnDecreased.textContent = valueDecreased - 0.5;
             }
@@ -144,7 +148,7 @@ const restarCantidadesKg = ()=>{
     })
 }
 
-//Función que suma 1 unidad a los productos catalogados en UND desde el .JSON
+//Function that adds 1 unit to the products cataloged in UND from the .JSON
 const sumarCantidadesUnd = ()=>{
     const btnsIncreased = document.querySelectorAll('#btn-increased')
     btnsIncreased.forEach(btn =>{
@@ -158,7 +162,7 @@ const sumarCantidadesUnd = ()=>{
     })
 }
 
-//Función que resta 1 unidad a los productos catalogados en UND desde el .JSON
+//Function that subtracts 1 unit from the products cataloged in UND from the .JSON
 const restarCantidadesUnd = ()=>{
     const btnsDecreased = document.querySelectorAll("#btn-less")
     btnsDecreased.forEach(btn =>{
@@ -174,7 +178,7 @@ const restarCantidadesUnd = ()=>{
     })
 }
 
-//esta funcion captura el elemento html que sera usado como constructor del objeto en setCarrito
+//this function captures the html element that will be used as the constructor of the object in setCart
 const addCarrito = e =>{
     if(e.target.classList.contains("btn-comprar")){
         setCarrito(e.target.parentElement);
@@ -182,7 +186,7 @@ const addCarrito = e =>{
     e.stopPropagation()
 }
 
-//Esta función crea un objeto por cada producto comprado y lo agrega al array productoscomprados
+//This function creates an object for each purchased product and adds it to the productosComprados array
 const setCarrito = productos => {
 
     //Aqui se valida de que el usuario no intente agregar un producto con cantidad 0
@@ -194,19 +198,20 @@ const setCarrito = productos => {
             cantidad: parseFloat(productos.querySelector('#cantidadProducto').textContent),
             unidad: productos.querySelector('#unidades').textContent
         }
-        //aqui se valida si el producto ya existe en el array productosComprados
+        //here it is validated if the product already exists in the productosComprados array
         productosComprados.hasOwnProperty(producto.id) ? (
             producto.cantidad = parseFloat(productosComprados[producto.id].cantidad) + parseFloat(producto.cantidad)            
         ):(
-            //Esta función setea el localStorage cuando el producto no existe en el array productosComprados
+            //This function sets the localStorage when the product does not exist in the array productosComprados
             numberCarrito()
         )
-        //Esta linea resetea la cantidad de la card en el DOM
+        //This line resets the amount of the card in the DOM
         productos.querySelector('#cantidadProducto').textContent = 0;
-        //esta linea agrega el objeto al array productosComprados
+        //this line adds the object to the productosComprados array
         productosComprados[producto.id] = {...producto};
-        //Esta linea guarda el carrito en el localStorage
+        //This line saves the cart in the localStorage
         localStorage.setItem("listaProductos", JSON.stringify(productosComprados));
+        //This line executes the sweeAlert library to notify that the product has been added
         Toastify({
             text: "Se ha agregado el producto",
             duration: 3000,
@@ -220,7 +225,7 @@ const setCarrito = productos => {
             onClick: function(){} // Callback after click
           }).showToast();
     }else{
-        //esta linea ejecuta la biblioteca sweetAlert en el caso de que el usuario intente agregar un producto con cantidad 0
+        //this line executes the sweetAlert library in case the user tries to add a product with quantity 0
         Toastify({
             text: "No has indicado una cantidad a comprar",
             duration: 3000,
@@ -236,11 +241,11 @@ const setCarrito = productos => {
     }
 }
 
-////Esta función setea el localStorage cuando el producto no existe en el array productosComprados y aumenta el numero en el carrito
+//This function sets the localStorage when the product does not exist in the productosComprados array and increases the number in the cart
 const numberCarrito = ()=>{
     const btnComprar = document.getElementById('btnComprar');
     const anchorEndBuy = document.getElementById('anchorEndBuy')
-    //Esta linea habilita visualmente el boton "comprar" 
+    //This line visually enables the "buy" button 
     if(btnComprar.classList.contains("btn-buy-disable")){
         btnComprar.classList.remove("btn-buy-disable");
         btnComprar.classList.remove("btn-buy-disable");
@@ -259,7 +264,7 @@ const numberCarrito = ()=>{
     localStorage.setItem("#productosComprados", resultado);
 }
 
-//Esta funcion se ejecuta a la carga del DOM para recuperar los datos del localStorage
+//This function is called on DOM load to retrieve data from localStorage
 const getLocalStorage = () =>{
     let productsStorageQuantity = JSON.parse(localStorage.getItem("#productosComprados"));
     let btnClassActive = localStorage.getItem("btnClassActive");

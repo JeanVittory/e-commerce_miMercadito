@@ -10,10 +10,10 @@ let quantityCart = JSON.parse(localStorage.getItem("#productosComprados"));
 const fragment = document.createDocumentFragment();
 
 
-/*Estas son las funciones que se ejecutan a la carga completa del DOM*/
+/*These are the functions that are executed at full load of the DOM*/
 document.addEventListener("DOMContentLoaded", e =>{
-    /*Esta validación ejecuta la funcion purchaseComplete con el fin de que si el usuario recarga la página al final de la compra 
-    se muestre el mensaje de despedida*/
+    /*This validation executes the purchaseComplete function so that if the user reloads the page at the end of the purchase
+    the goodbye message is displayed*/
     if(productsCart === null){
         purchaseComplete()
     }
@@ -27,8 +27,7 @@ document.addEventListener("DOMContentLoaded", e =>{
     validationForm();
 })
 
-/*Esta funcion carga los elementos dinamicos en el DOM */
-
+/*This function loads the dynamic elements into the DOM */
 const renderProducts = () =>{
     Object.values(productsCart).forEach(e => {
         templateProducts.querySelector("#product").textContent = e.nombre;
@@ -45,8 +44,7 @@ const renderProducts = () =>{
     sectionProducts.appendChild(fragment);
 }
 
-/*Esta funcíon suma cantidades de los productos medidos en kilos el usuario desea hacerlo desde la página de despacho de domicilios*/
-
+/*This function adds quantities of the products measured in KG if the user wishes to do from the home delivery page*/
 const sumarCantidadesKg = ()=>{   
     const btnsIncreased = document.querySelectorAll("#btn-add");
     btnsIncreased.forEach(btn=>{
@@ -65,8 +63,8 @@ const sumarCantidadesKg = ()=>{
     })  
 }
 
-/*Esta funcíon resta cantidades de los productos medidos en kilos el usuario desea hacerlo desde la página de despacho de domicilios*/
 
+/*This function subtracts quantities of the products measured in KG if the user wishes to do from the home delivery page*/
 const restarCantidadesKg = ()=>{   
     const btnsDecreased = document.querySelectorAll("#btn-less");
     btnsDecreased.forEach(btn=>{
@@ -76,31 +74,30 @@ const restarCantidadesKg = ()=>{
             const quantityBtnDecreased = document.querySelector(`#quantity[data-quantity-Item=cantidad${idBtnDecreased}]`);
             const productToDelete = document.querySelector(`#productToDelete[data-delete-Id=id${idBtnDecreased}]`);
             const valueDecreased = parseFloat(quantityBtnDecreased.textContent);
-            //Aqui se valida el tipo de unidad de peso, si el producto esta en KG se ejecuta la suma de 1 libra.
+            //Here the type of weight unit is validated, if the product is in KG, the sum of 1 pound is executed.
             if(idUnidades === "Kg"){
                 if(quantityBtnDecreased.textContent > 0){
                     quantityBtnDecreased.textContent = valueDecreased - 0.5;
                     productsCart[idBtnDecreased].cantidad = quantityBtnDecreased.textContent;
                 };
-                /*Esta validación permite eliminar el producto si el usuario resta cantidades y llega a 0 */
+                /*This validation allows to delete the product if the user subtracts quantities and reaches 0 */
                 if(quantityBtnDecreased.textContent == 0){
                     sectionProducts.removeChild(productToDelete);
-                    //Esta sentencia elimina el producto del objeto en el localStorage
+                    //This statement removes the product from the object in the localStorage
                     delete productsCart[idBtnDecreased];
                     quantityCart -= 1;
                 }  
             };
-            /*Aquí se actualiza el localStorage según las acciones realizadas en las lineas anteriores*/
+            /* Here the localStorage is updated according to the actions carried out in the previous lines */
             localStorage.setItem("#productosComprados", quantityCart);
             localStorage.setItem("listaProductos", JSON.stringify(productsCart));
-            /*Se ejecuta esta funcion con el fín de actualizar los elementos pertinentes en la factura en pantalla*/
+            /*This function is executed in order to update the pertinent elements in the invoice on the screen*/
             updateBill();
         })
     })  
 }
 
-/*Esta funcíón elimina el producto del carrito si el usuario así lo desea*/
-
+/*This function removes the product from the cart if the user clicks the trash icon*/
 const deleteProducts = () =>{
     const btnsDelete = document.querySelectorAll("#btn-delete");
     btnsDelete.forEach(btn =>{
@@ -111,7 +108,7 @@ const deleteProducts = () =>{
                 sectionProducts.removeChild(productToDelete)
                 delete productsCart[idBtnDelete];
                 quantityCart -= 1;
-                /*Aquí se actualiza el localStorage según las acciones realizadas en las lineas anteriores*/
+                /* Here the localStorage is updated according to the actions carried out in the previous lines */
                 localStorage.setItem("#productosComprados", quantityCart);
                 localStorage.setItem("listaProductos", JSON.stringify(productsCart));
                 /*Se ejecuta esta funcion con el fín de actualizar los elementos pertinentes en la factura en pantalla*/
@@ -122,8 +119,7 @@ const deleteProducts = () =>{
     })
 }
 
-/*Esta funcíon suma cantidades de los productos medidos en unidades el usuario desea hacerlo desde la página de despacho de domicilios*/
-
+/*This function adds quantities of the products measured in units the user wishes to do from the home delivery page*/
 const sumarCantidadesUnd = ()=>{   
     const btnsIncreased = document.querySelectorAll("#btn-add");
     btnsIncreased.forEach(btn=>{
@@ -132,20 +128,18 @@ const sumarCantidadesUnd = ()=>{
             const idUnidades = e.target.parentNode.dataset.unidades;
             const quantityBtnIncreased = document.querySelector(`#quantity[data-quantity-Item=cantidad${idBtnIncreased}]`);
             const valueIncreased = parseFloat(quantityBtnIncreased.textContent);
-            //Aqui se valida el tipo de unidad de peso, si el producto esta en Und se ejecuta la suma de 1 libra.
+            //Here the type of weight unit is validated, if the product is in Und, the sum of 1 unit is executed.
             if(idUnidades === "Und") quantityBtnIncreased.textContent = valueIncreased + 1; 
             productsCart[idBtnIncreased].cantidad = quantityBtnIncreased.textContent;
-            /*Aquí se actualiza el localStorage según las acciones realizadas en las lineas anteriores*/
+            /* Here the localStorage is updated according to the actions carried out in the previous lines */
             localStorage.setItem("listaProductos", JSON.stringify(productsCart));
-            /*Se ejecuta esta funcion con el fín de actualizar los elementos pertinentes en la factura en pantalla*/
+            /*This function is executed in order to update the pertinent elements in the invoice on the screen*/
             updateBill();
         })
     })  
 }
 
-/*Esta funcíon resta cantidades de los productos medidos en unidades el usuario desea hacerlo desde la página de despacho de domicilios*/
-
-
+/*This function subtracts quantities of the products measured in units the user wishes to do from the home delivery page*/
 const restarCantidadesUnd = ()=>{   
     const btnsDecreased = document.querySelectorAll("#btn-less");
     btnsDecreased.forEach(btn=>{
@@ -155,7 +149,7 @@ const restarCantidadesUnd = ()=>{
             const quantityBtnDecreased = document.querySelector(`#quantity[data-quantity-Item=cantidad${idBtnDecreased}]`);
             const productToDelete = document.querySelector(`#productToDelete[data-delete-Id=id${idBtnDecreased}]`);
             const valueDecreased = parseFloat(quantityBtnDecreased.textContent);
-            //Aqui se valida el tipo de unidad de peso, si el producto esta en Und se ejecuta la suma de 1 libra.
+            //Here the type of weight unit is validated, if the product is in Und, the subtract of 1 unit is executed.
             if(idUnidades === "Und"){
                 if(quantityBtnDecreased.textContent > 0){
                     quantityBtnDecreased.textContent = valueDecreased - 1;
@@ -167,35 +161,34 @@ const restarCantidadesUnd = ()=>{
                     quantityCart -= 1;
                 }  
             };
-            /*Aquí se actualiza el localStorage según las acciones realizadas en las lineas anteriores*/
+            /* Here the localStorage is updated according to the actions carried out in the previous lines */
             localStorage.setItem("#productosComprados", quantityCart);
             localStorage.setItem("listaProductos", JSON.stringify(productsCart));
-            /*Se ejecuta esta funcion con el fín de actualizar los elemento spertinentes en la factura en pantalla*/
+            /* This function is executed in order to update the pertinent elements in the invoice on the screen */
             updateBill();
         })
     })  
 }
 
-/*Esta función realiza el subtotal de la compra*/
+/*This function subtotals the purchase*/
 const subTotal = () =>{
     const sumaTotal = Object.values(productsCart).reduce((acc, {precio, cantidad}) => acc + precio*cantidad, 0);
     return sumaTotal.toFixed(3);
 }; 
 
-/*Esta función calcula el IVA segun el subtotal caluclado en la función anterior */
+/*This function calculates the VAT according to the subtotal calculated in the previous function */
 const ivaCalculado = ()=>{
     const resultadoIva = (subTotal() * 19) / 100;
     return resultadoIva.toFixed(3);
 }    
 
-/*Esta función calcula el gran total segun los resultados de subTotal() e ivaCalculado() */
-
+/*This function calculates the grand total according to the results of subTotal() and ivaCalculado() */
 const granTotal = ()=>{
     const granTotal = parseFloat(parseFloat(subTotal())) + parseFloat(ivaCalculado());
     return granTotal.toFixed(3);
 }
 
-/*Está función renderiza en el DOM los elemento dinamicos de resumen de compra*/
+/*This function renders in the DOM the dynamic elements of the purchase summary*/
 const renderBill = () =>{
     templateBill.querySelector("#subTotal").textContent = subTotal();
     templateBill.querySelector("#iva").textContent = ivaCalculado();
@@ -205,14 +198,14 @@ const renderBill = () =>{
     sectionBill.appendChild(fragment);
 }
 
-/*Esta funciçon actualiza el resúmen de compra su existe alguna alteración dentro del carrito de compras  */
+/*This function updates the purchase summary if there is any change in the shopping cart */
 const updateBill = () =>{
     sectionBill.querySelector("#subTotal").textContent = subTotal();
     sectionBill.querySelector("#iva").textContent = ivaCalculado();
     sectionBill.querySelector("#total").textContent = granTotal();
 }
 
-/*Esta funcion valida que la información ingresada por el usuario para realizar el domicilio sea correcta */
+/*This function validates that the information entered by the user to create the address form is correct */
 const validationForm = () => {
     const name = document.getElementById("name");
     const lastName = document.getElementById("lastname");
@@ -222,7 +215,7 @@ const validationForm = () => {
     const regExLetters = /^[a-zA-ZñÑ]+$/;
     const regExAddress = /^[a-zA-Z#0-9]+$/;
 
-    /*Si el usuario intenta realizar un pedido con el carrito vacio se ejecuta la funcion de toastify interna */
+    /*If the user tries to place an order with an empty cart, the internal toastify function is executed */
     form.addEventListener("submit", e =>{
         if(Object.keys(productsCart).length === 0){
             e.preventDefault();
@@ -240,7 +233,7 @@ const validationForm = () => {
             }).showToast();
             return;
         } 
-        /*Si el usuario intenta ingresar numeros en un campo de letras se considera un nombre invalido */
+        /*If the user tries to enter numbers in a letter field it is considered an invalid name */
         if(!regExLetters.test(name.value) || name.value === null){
             e.preventDefault()
             name.style.border = "thick solid #ff7b7b"
@@ -261,7 +254,7 @@ const validationForm = () => {
             name.style.border = "none";
         } 
         
-        /*Si el usuario intenta ingresar numeros en el campo de apellido se considera invalido */
+        /*If the user tries to enter numbers in the last name field, it is considered invalid */
         if(!regExLetters.test(lastName.value)){
             e.preventDefault()
             lastName.style.border = "thick solid #ff7b7b"
@@ -283,9 +276,8 @@ const validationForm = () => {
             
         } 
 
-        /*Si el usuario intenta ingresar letras en un campo numerico se considera invalido (Esta validación podria eliminarse ya que desde
-        el HTML se esta desplegando el teclado numerico al explicitarse que es un input de tipo numero) */
-
+        /*If the user tries to enter letters in a numeric field it is considered invalid (This validation could be eliminated since from
+        the HTML is displaying the numeric keyboard when it is made explicit that it is an input of type number) */
         if(!regExNumbers.test(phone.value)){
             e.preventDefault()
             phone.style.border = "thick solid #ff7b7b"
@@ -307,7 +299,7 @@ const validationForm = () => {
            
         }
         
-        /*Si el usuario intenta realizar un pedido si rellenar este campo se ejecuta la funcion toastify() */
+        /*If the user tries to place an order without filling in this field, the toastify() function is executed */
         if(!regExAddress.test(address.value)){
             e.preventDefault()
             address.style.border = "thick solid #ff7b7b"
@@ -332,7 +324,7 @@ const validationForm = () => {
     })
 }
 
-/*Esta función realiza cambios en el css para desplegar el mensaje de confirmación de que el pedido fue despachado con éxito */
+/*This function makes changes to the css to display the confirmation message that the order was successfully dispatched */
 const purchaseComplete = e =>{
     localStorage.setItem("listaProductos", JSON.stringify(null));
     localStorage.setItem("#productosComprados", JSON.stringify(0));
