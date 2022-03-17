@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", e => {
 //Function that requests information from the db.json
 const fetchData = async()=>{
     try{
-        //const res = await fetch("https://raw.githubusercontent.com/JeanVittory/e-commerce_miMercadito/main/public/db.json");
-        const res = await fetch("public/db.json");
+        const res = await fetch("https://raw.githubusercontent.com/JeanVittory/e-commerce_miMercadito/main/public/db.json"); //this line works to fetch the db.json from github and so the github page reads the db.json
+        //const res = await fetch("public/db.json"); //activate this line if you want to run the db.json locally
         const data = await res.json();
         pintarCards(data);
         sumarCantidadesKg();
