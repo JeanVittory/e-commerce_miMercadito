@@ -1,98 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="public/css/all.min.css">
-    <link rel="stylesheet" href="public/css/fontawesome.min.css">
-    <link rel="stylesheet" href="public/styles.css">
-    <link rel="stylesheet" href="public/css/mystyles.css">
-    <title>MiMercadito</title>
-</head>
-<body>
-    <header class="px-4  header">
-        <!--Logo-->
-        <div class="flex  items-center">
-            <img src="public/assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo">
-            <h1 class="logo">MiMercadito</h1>
-        </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+		/>
+		<link rel="stylesheet" href="public/css/all.min.css" />
+		<link rel="stylesheet" href="public/css/fontawesome.min.css" />
+		<link rel="stylesheet" href="public/styles.css" />
+		<link rel="stylesheet" href="public/css/mystyles.css" />
+		<title>MiMercadito</title>
+	</head>
+	<body>
+		<header class="px-4 header">
+			<!--Logo-->
+			<div class="flex items-center">
+				<img src="public/assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo" />
+				<h1 class="logo">MiMercadito</h1>
+			</div>
 
-        <!--Carrito de compras-->
-        <div class="flex circle sm:mr-5  md:ml-6">
-            <div id="basketNumber" class="basket-number">0</div>
-            <img src="public/assets/svg/basket.svg" alt="Canasta de compras">
-        </div>
+			<!--Carrito de compras-->
+			<div class="flex circle sm:mr-5 md:ml-6">
+				<div id="basketNumber" class="basket-number">0</div>
+				<img src="public/assets/svg/basket.svg" alt="Canasta de compras" />
+			</div>
 
-        <!--Navegación a otras paginas del sitio web-->
-       
-        <nav id="navContainer">
-            <button id="btnComprar" class="btn-buy-disable  text-white  p-2  rounded-lg  inline-block  mx-2  lg:justify-around  lg:mx-0  cursor-auto  lg:cursor-pointer"><a id="anchorEndBuy" class="anchorEndBuy">Comprar</a></button>
-            <i class="fas fa-ellipsis-v   md:hidden"></i>
-            <a class="button-nav  font-medium  hidden  md:inline-block" href="">Inicio</a>
-            <a class="button-nav  hidden  md:inline-block" href="">FAQS</a>
-            <a class="button-nav  hidden  md:inline-block" href="">Contacto</a>
-        </nav>
-    </header>
+			<!--Navegación a otras paginas del sitio web-->
 
-    <!--Barra de navegación por categorias de productos-->
-    <nav class="container  flex  sm:justify-between  mt-8  overflow-x-scroll  hidden-scroll-1  hidden-scroll-2  sm:mx-auto">
+			<nav id="navContainer">
+				<button
+					id="btnComprar"
+					class="btn-buy-disable text-white p-2 rounded-lg inline-block mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				>
+					<a id="anchorEndBuy" class="anchorEndBuy">Comprar</a>
+				</button>
+				<i class="fas fa-ellipsis-v md:hidden"></i>
+				<a class="button-nav font-medium hidden md:inline-block" href="">Inicio</a>
+				<a class="button-nav hidden md:inline-block" href="">FAQS</a>
+				<a class="button-nav hidden md:inline-block" href="">Contacto</a>
+			</nav>
+		</header>
 
-        <button id="btn-all" class="btn  selected-category  mx-2  lg:justify-around  lg:mx-0 cursor-auto lg:cursor-pointer" data-filter="todos">Todos</button>
-        <button id="btn-carnes" class="btn  unselected-category  mx-2  lg:justify-around  lg:mx-0 cursor-auto lg:cursor-pointer" data-filter="1">Carnes</button>
-        <button id="btn-lacteos" class="btn  unselected-category  mx-2  lg:justify-around  lg:mx-0 cursor-auto lg:cursor-pointer" data-filter="2">Lácteos</button>
-        <button id="btn-granos" class="btn  unselected-category  mx-2  lg:justify-around  lg:mx-0  cursor-auto lg:cursor-pointer" data-filter="3">Granos</button>
-        <button id="btn-vegetales" class="btn  unselected-category  mx-2  lg:justify-around  lg:mx-0 cursor-auto lg:cursor-pointer" data-filter="4">Vegetales</button>
-        <button id="btn-empacados" class="btn  unselected-category  mx-2  lg:justify-around  lg:mx-0 cursor-auto lg:cursor-pointer" data-filter="5">Empacados</button>
-        <button id="btn-frutas" class="btn  unselected-category  mx-2  lg:justify-around  lg:mx-0 cursor-auto lg:cursor-pointer" data-filter="6">Frutas</button>
-        <button id="btn-bebidas" class="btn  unselected-category  mx-2  lg:justify-around  lg:mx-0 cursor-auto lg:cursor-pointer" data-filter="7">Bebidas</button>
+		<!--Barra de navegación por categorias de productos-->
+		<nav
+			class="container flex sm:justify-evenly mt-8 overflow-x-scroll hidden-scroll-1 hidden-scroll-2 sm:mx-auto"
+		>
+			<button
+				id="btn-all"
+				class="btn selected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="todos"
+			>
+				Todos
+			</button>
+			<button
+				id="btn-carnes"
+				class="btn unselected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="1"
+			>
+				Carnes
+			</button>
+			<button
+				id="btn-lacteos"
+				class="btn unselected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="2"
+			>
+				Lácteos
+			</button>
+			<button
+				id="btn-granos"
+				class="btn unselected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="3"
+			>
+				Granos
+			</button>
+			<button
+				id="btn-vegetales"
+				class="btn unselected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="4"
+			>
+				Vegetales
+			</button>
+			<button
+				id="btn-empacados"
+				class="btn unselected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="5"
+			>
+				Empacados
+			</button>
+			<button
+				id="btn-frutas"
+				class="btn unselected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="6"
+			>
+				Frutas
+			</button>
+			<button
+				id="btn-bebidas"
+				class="btn unselected-category mx-2 lg:justify-around lg:mx-0 cursor-auto lg:cursor-pointer"
+				data-filter="7"
+			>
+				Bebidas
+			</button>
+		</nav>
 
-    </nav>
+		<main
+			id="cards"
+			class="container mx-auto px-14 mt-20 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3"
+		></main>
 
-    <main id="cards" class="container  mx-auto  px-14  mt-20  grid  grid-cols-1  gap-12  sm:grid-cols-2  lg:grid-cols-3">
-        
-    </main>
+		<template id="template-cards">
+			<article class="producto flex mb-5 flex-nowrap flex-col shadow-card rounded-xl">
+				<!--Imagen del producto -->
+				<div class="shadow-card z-50 rounded-t-xl">
+					<div id="dscto" class="absolute bg-yellowDsc rounded-dsc p-2 font-roboto">-20%</div>
+					<img
+						id="imgCards"
+						class="max-h-min rounded-t-xl"
+						src="public/assets/imgs/costillas.jpg"
+						alt=""
+					/>
+				</div>
 
-    <template id="template-cards">
-        <article class="producto flex  mb-5  flex-nowrap  flex-col  shadow-card  rounded-xl">
-            <!--Imagen del producto -->
-            <div class="shadow-card  z-50  rounded-t-xl">
-                <div id="dscto" class="absolute  bg-yellowDsc rounded-dsc p-2  font-roboto">-20%</div>
-                <img id="imgCards" class="max-h-min  rounded-t-xl" src="public/assets/imgs/costillas.jpg" alt="">
-            </div>
-            
-            <div class="flex  flex-nowrap  flex-col  yellow-card  rounded-b-xl">
-                <!--Nombre del producto -->     
-                <div class="flex flex-col  mt-2">
-                    <h2 id="titulo-card" class="m-auto  mt-3 mb-4 font-roboto  text-lg  font-medium">Costillas de Res</h2>
-                    <!--información del producto-->
-                    <div class="grid  grid-cols-2  content-center">
-                        <p class="text-center  font-roboto">Antes</p>
-                        <p id="precio-antes" class="text-center  font-roboto  line-through">12.000</p>
-                        <p class="text-center  font-roboto  mt-1">Ahora</p>
-                        <p id="precio-ahora" class="text-center  font-roboto  mt-1">$9.600</p>
-                    </div>
-                    
-                    <!--Barra para agregar o quitar las cantidades a comprar-->
-                    <div id="compras-box" class="id-gen  w-8/12  flex  flex-row  flex-nowrap  justify-between  white-bar  rounded-xl  px-2  m-auto  shadow-bar  mt-4">
-                        <button id="btn-less"><img src="public/assets/svg/less.svg" alt="Menos"></button>
-                        <p id="cantidadProducto" class="cantidadProducto">0</p>
-                        <p id="unidades">Kg</p>
-                        <button id="btn-increased"><img src="public/assets/svg/add.svg" alt="Más"></button>
-                    </div>
-                    
-                    <!--Botón para agregar al carrito-->
-                    <button class= "btn-comprar max-w-xl  bg-orangeBasket  text-white  rounded-xl  font-roboto  m-auto  p-1.5  mt-6  mb-3">Agregar al carrito</button>
-                </div>
+				<div class="flex flex-nowrap flex-col yellow-card rounded-b-xl">
+					<!--Nombre del producto -->
+					<div class="flex flex-col mt-2">
+						<h2 id="titulo-card" class="m-auto mt-3 mb-4 font-roboto text-lg font-medium">
+							Costillas de Res
+						</h2>
+						<!--información del producto-->
+						<div class="grid grid-cols-2 content-center">
+							<p class="text-center font-roboto">Antes</p>
+							<p id="precio-antes" class="text-center font-roboto line-through">12.000</p>
+							<p class="text-center font-roboto mt-1">Ahora</p>
+							<p id="precio-ahora" class="text-center font-roboto mt-1">$9.600</p>
+						</div>
 
-            </div>
-        </article>
-    </template>
+						<!--Barra para agregar o quitar las cantidades a comprar-->
+						<div
+							id="compras-box"
+							class="id-gen w-8/12 flex flex-row flex-nowrap justify-between white-bar rounded-xl px-2 m-auto shadow-bar mt-4"
+						>
+							<button id="btn-less"><img src="public/assets/svg/less.svg" alt="Menos" /></button>
+							<p id="cantidadProducto" class="cantidadProducto">0</p>
+							<p id="unidades">Kg</p>
+							<button id="btn-increased"><img src="public/assets/svg/add.svg" alt="Más" /></button>
+						</div>
 
-    <!--Aqui terminan las tarjetas de productos -->
-    
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="public/indexApp.js"></script>
-</body>
+						<!--Botón para agregar al carrito-->
+						<button
+							class="btn-comprar max-w-xl bg-orangeBasket text-white rounded-xl font-roboto m-auto p-1.5 mt-6 mb-3"
+						>
+							Agregar al carrito
+						</button>
+					</div>
+				</div>
+			</article>
+		</template>
+
+		<!--Aqui terminan las tarjetas de productos -->
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+		<script src="public/indexApp.js"></script>
+	</body>
 </html>

@@ -22,9 +22,6 @@ module.exports = {
 				unselectTab: '#E7E7E7',
 				bgPrice: '#E9E9E9',
 			},
-			screens: {
-				xl: '1281px',
-			},
 		},
 	},
 	plugins: [],
