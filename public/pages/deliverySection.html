@@ -1,117 +1,190 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/fontawesome.min.css">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../css/mystyles.css">
-    <title>MiMercadito - Finaliza tu compra</title>
-</head>
-<body class="bg-bgDelivery">
-    <header class="px-4  header">
-        <!--Logo-->
-        <div class="flex  items-center">
-            <img src="../assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo">
-            <h1 class="logo">MiMercadito</h1>
-        </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+		/>
+		<link rel="stylesheet" href="../css/all.min.css" />
+		<link rel="stylesheet" href="../css/fontawesome.min.css" />
+		<link rel="stylesheet" href="../styles.css" />
+		<link rel="stylesheet" href="../css/mystyles.css" />
+		<title>MiMercadito - Finaliza tu compra</title>
+	</head>
+	<body class="bg-bgDelivery">
+		<header class="px-4 header">
+			<!--Logo-->
+			<div class="flex items-center">
+				<img src="../assets/svg/market-supermarket-svgrepo-com 1.svg" alt="Logo" />
+				<h1 class="logo">MiMercadito</h1>
+			</div>
 
-        <!--Navegación a otras paginas del sitio web-->
-       
-        <nav id="navContainer">
-            <i class="fas fa-ellipsis-v   md:hidden"></i>
-            <a class="button-nav  font-medium  hidden  md:inline-block  cursor-auto lg:cursor-pointer" href="">Inicio</a>
-            <a class="button-nav  hidden  md:inline-block  cursor-auto lg:cursor-pointer" href="">FAQS</a>
-            <a class="button-nav  hidden  md:inline-block  cursor-auto lg:cursor-pointer" href="">Contacto</a>
-        </nav>
-    </header>
+			<!--Navegación a otras paginas del sitio web-->
 
-    <section id="section-products" class="container mx-auto mt-12">
-        <ul class="grid grid-cols-4  justify-items-center mb-2">
-            <li class="font-roboto  text-center  font-medium mb-2">Item</li><li class="font-roboto  text-center  font-medium mb-2">Producto</li><li class="font-roboto  text-center  font-medium mb-2">Cantidad</li><li class="font-roboto  text-center  font-medium mb-2">Precio</li>
-        </ul>    
-    </section>
-    <section id="section-bill" class="container mx-auto px-8">
+			<nav id="navContainer">
+				<i class="fas fa-ellipsis-v md:hidden"></i>
+				<a class="button-nav font-medium hidden md:inline-block cursor-auto lg:cursor-pointer" href=""
+					>Inicio</a
+				>
+				<a class="button-nav hidden md:inline-block cursor-auto lg:cursor-pointer" href="">FAQS</a>
+				<a class="button-nav hidden md:inline-block cursor-auto lg:cursor-pointer" href="">Contacto</a>
+			</nav>
+		</header>
 
-    </section>
+		<section id="section-products" class="container mx-auto mt-12">
+			<ul class="grid grid-cols-4 justify-items-center mb-2">
+				<li class="font-roboto text-center font-medium mb-2">Item</li>
+				<li class="font-roboto text-center font-medium mb-2">Producto</li>
+				<li class="font-roboto text-center font-medium mb-2">Cantidad</li>
+				<li class="font-roboto text-center font-medium mb-2">Precio</li>
+			</ul>
+		</section>
+		<section id="section-bill" class="container mx-auto px-8"></section>
 
-    <section id="section-form" class="container mx-auto mt-48 px-8">
-        <button class="bg-yellowBuyMore font-medium  p-1 px-2 rounded-2xl  shadow-bar font-roboto"><a href="../../index.html">Seguir comprando</a></button>
-        
-        <article class="mt-7">
-            <form id="form" class="grid grid-cols-1 lg:grid-cols-3 gap-y-2  justify-items-center" action="/public/index.html" method="GET">
-                <div class="w-full grid grid-cols-1 justify-items-center">
-                    <label class="grid-n  font-roboto font-medium" for="name">Nombre:</label>
-                    <input class="grid-nombre  w-9/12 mb-4 font-roboto rounded-lg  shadow-bar  text-center" id="name" type="text" name="name">
-                </div>
-                <div class="w-full grid grid-cols-1 justify-items-center">
-                    <label class="grid-a  font-roboto font-medium" for="lastname">Apellido:</label>
-                    <input class="grid-apellido  w-9/12 mb-4 font-roboto rounded-lg  shadow-bar  text-center" id="lastname" type="text" name="lastname">
-                </div>
-                <div class="w-full grid grid-cols-1 justify-items-center">
-                    <label class="grid-mp  font-roboto font-medium" for="payment">Método de pago:</label>
-                    <select class="grid-metodo  w-9/12 mb-4 font-roboto rounded-lg  shadow-bar text-center" name="payment" id="payment" name="payment">
-                        <option class="font-roboto text-center" value="efectivo">Efectivo</option>
-                        <option class="font-roboto  text-center" value="credito">Tarjeta de crédito</option>
-                        <option class="font-roboto  text-center" value="debito">Tarjeta de débito</option>
-                    </select>
-                </div>
-                <div class="w-full grid grid-cols-1 justify-items-center">
-                    <label class="grid-t  font-roboto font-medium" for="phone">Teléfono:</label>
-                    <input class="grid-telefono  w-9/12  h-6 mb-4 font-roboto rounded-lg  shadow-bar  text-center" id="phone" type="tel" name="phone">
-                </div>
-                <div class="w-full grid grid-cols-1 justify-items-center">
-                    <label class="grid-de  font-roboto font-medium" for="address">Dirección de envío:</label>
-                    <input class="grid-direccion  w-9/12 h-6  mb-4 font-roboto rounded-lg  shadow-bar  text-center" id="address" type="text" name="address">
-                </div>
-                <div class="w-full grid grid-cols-1 justify-items-center">
-                    <button class="grid-enviamelo w-2/4 mt-8 mb-8 font-medium bg-redBtnEnviar  text-white  p-1 px-2 rounded-2xl  shadow-bar  font-roboto" type="submit">¡Envíamelo!</button>
-                </div>
-            </form>
-        </article>
-    </section>
+		<section id="section-form" class="container mx-auto mt-48 px-8">
+			<button class="bg-yellowBuyMore font-medium p-1 px-2 rounded-2xl shadow-bar font-roboto">
+				<a href="../../index.html">Seguir comprando</a>
+			</button>
 
-    <section id="purchase-complete" class="mt-14 hidden flex-col  justify-center  items-center">
-        <h2 class="font-roboto font-medium p-4 mb-8 text-center">¡Tu compra ha sido despachada con éxito, vuelve pronto!</h2>
-        <button class="bg-yellowBuyMore font-medium  p-1  px-2  mb-8 rounded-2xl  shadow-bar font-roboto"><a href="../../index.html">Devuelveme a la tienda</a></button>
-        <img class="p-4" src="../assets/svg/route-path-svgrepo-com 1.svg" alt="Envio exitoso">
-    </section>
+			<article class="mt-7">
+				<form
+					id="form"
+					class="grid grid-cols-1 lg:grid-cols-3 gap-y-2 justify-items-center"
+					action="/public/index.html"
+					method="GET"
+				>
+					<div class="w-full grid grid-cols-1 justify-items-center">
+						<label class="grid-n font-roboto font-medium" for="name">Nombre:</label>
+						<input
+							class="grid-nombre w-9/12 mb-4 font-roboto rounded-lg shadow-bar text-center"
+							id="name"
+							type="text"
+							name="name"
+							autocomplete="false"
+						/>
+					</div>
+					<div class="w-full grid grid-cols-1 justify-items-center">
+						<label class="grid-a font-roboto font-medium" for="lastname">Apellido:</label>
+						<input
+							class="grid-apellido w-9/12 mb-4 font-roboto rounded-lg shadow-bar text-center"
+							id="lastname"
+							type="text"
+							name="lastname"
+							autocomplete="false"
+						/>
+					</div>
+					<div class="w-full grid grid-cols-1 justify-items-center">
+						<label class="grid-mp font-roboto font-medium" for="payment">Método de pago:</label>
+						<select
+							class="grid-metodo w-9/12 mb-4 font-roboto rounded-lg shadow-bar text-center"
+							name="payment"
+							id="payment"
+							name="payment"
+						>
+							<option class="font-roboto text-center" value="efectivo">Efectivo</option>
+							<option class="font-roboto text-center" value="credito">Tarjeta de crédito</option>
+							<option class="font-roboto text-center" value="debito">Tarjeta de débito</option>
+						</select>
+					</div>
+					<div class="w-full grid grid-cols-1 justify-items-center">
+						<label class="grid-t font-roboto font-medium" for="phone">Teléfono:</label>
+						<input
+							class="grid-telefono w-9/12 h-6 mb-4 font-roboto rounded-lg shadow-bar text-center"
+							id="phone"
+							type="tel"
+							name="phone"
+							autocomplete="false"
+						/>
+					</div>
+					<div class="w-full grid grid-cols-1 justify-items-center">
+						<label class="grid-de font-roboto font-medium" for="address">Dirección de envío:</label>
+						<input
+							class="grid-direccion w-9/12 h-6 mb-4 font-roboto rounded-lg shadow-bar text-center"
+							id="address"
+							type="text"
+							name="address"
+							autocomplete="false"
+						/>
+					</div>
+					<div class="w-full grid grid-cols-1 justify-items-center">
+						<button
+							class="grid-enviamelo w-2/4 mt-8 mb-8 font-medium bg-redBtnEnviar text-white p-1 px-2 rounded-2xl shadow-bar font-roboto"
+							type="submit"
+						>
+							¡Envíamelo!
+						</button>
+					</div>
+				</form>
+			</article>
+		</section>
 
-    <template id="template-products">
-        <div id="productToDelete">
-            <ul class="grid grid-cols-4  justify-items-center mb-1">
-                <li id="product-item" class="mb-2  font-roboto  text-center flex  flex-row  flex-nowrap items-center  content-center justify-center">
-                    <img id="btn-delete" class="mx-1 w-4  cursor-auto lg:cursor-pointer" src="../assets/svg/trash-svgrepo-com (1).svg" alt="Borrar">
-                    <img id="btn-add" class="mx-1 w-5  cursor-auto lg:cursor-pointer" src="../assets/svg/add.svg" alt="Agregar">
-                    <img id="btn-less" class="mx-1 w-4  cursor-auto lg:cursor-pointer" src="../assets/svg/less.svg" alt="restar">
-                </li>
-                <li id="product" class="text-sm  sm:text-base mb-2  font-roboto  text-center ">Carne de Res</li>
-                <div class="grid grid-cols-2 justify-items-center">
-                    <li id="quantity" class="text-sm  sm:text-base quantity mb-2  font-roboto  text-center ">4</li>
-                    <p id="type" class="text-sm  sm:text-base mb-2  font-roboto  text-center">Kg</p>
-                </div>
-                <li id="price" class="text-sm  sm:text-base mb-2  font-roboto  text-center ">2000</li>
-            </ul>
-        </div>
-    </template>
+		<section id="purchase-complete" class="mt-14 hidden flex-col justify-center items-center">
+			<h2 class="font-roboto font-medium p-4 mb-8 text-center">
+				¡Tu compra ha sido despachada con éxito, vuelve pronto!
+			</h2>
+			<button class="bg-yellowBuyMore font-medium p-1 px-2 mb-8 rounded-2xl shadow-bar font-roboto">
+				<a href="../../index.html">Devuelveme a la tienda</a>
+			</button>
+			<img class="p-4" src="../assets/svg/route-path-svgrepo-com 1.svg" alt="Envio exitoso" />
+		</section>
 
-    <template id="template-bill">
-        <div id="bill" class="float-right mt-8 w-7/12 sm:w-5/12  grid grid-cols-2  justify-items-center py-4 bg-bgPurchSummary rounded-lg  shadow-bar">
-            <h2 class="text-sm  sm:text-base font-roboto">Subtotal</h2>
-            <p id="subTotal" class="text-sm  sm:text-base font-roboto">$140.000</p>
-            <h2 class="text-sm  sm:text-base font-roboto">IVA (19%)</h2>
-            <p id="iva" class="text-sm  sm:text-base font-roboto">$26.600</p>
-            <h2 class="text-sm  sm:text-base font-roboto">Envío</h2>
-            <p class="text-sm  sm:text-base font-roboto">$0</p>
-            <h2 class="text-sm  sm:text-base font-roboto  font-medium">Total</h2>
-            <p id="total" class="text-sm  sm:text-base font-roboto">$166.600</p>
-        </div>
-    </template>
+		<template id="template-products">
+			<div id="productToDelete">
+				<ul class="grid grid-cols-4 justify-items-center mb-1">
+					<li
+						id="product-item"
+						class="mb-2 font-roboto text-center flex flex-row flex-nowrap items-center content-center justify-center"
+					>
+						<img
+							id="btn-delete"
+							class="mx-1 w-4 cursor-auto lg:cursor-pointer"
+							src="../assets/svg/trash-svgrepo-com (1).svg"
+							alt="Borrar"
+						/>
+						<img
+							id="btn-add"
+							class="mx-1 w-5 cursor-auto lg:cursor-pointer"
+							src="../assets/svg/add.svg"
+							alt="Agregar"
+						/>
+						<img
+							id="btn-less"
+							class="mx-1 w-4 cursor-auto lg:cursor-pointer"
+							src="../assets/svg/less.svg"
+							alt="restar"
+						/>
+					</li>
+					<li id="product" class="text-sm sm:text-base mb-2 font-roboto text-center">Carne de Res</li>
+					<div class="grid grid-cols-2 justify-items-center">
+						<li id="quantity" class="text-sm sm:text-base quantity mb-2 font-roboto text-center">4</li>
+						<p id="type" class="text-sm sm:text-base mb-2 font-roboto text-center">Kg</p>
+					</div>
+					<li id="price" class="text-sm sm:text-base mb-2 font-roboto text-center">2000</li>
+				</ul>
+			</div>
+		</template>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="deliveryApp.js" type="module"></script>
-</body>
+		<template id="template-bill">
+			<div
+				id="bill"
+				class="float-right mt-8 w-7/12 sm:w-5/12 grid grid-cols-2 justify-items-center py-4 bg-bgPurchSummary rounded-lg shadow-bar"
+			>
+				<h2 class="text-sm sm:text-base font-roboto">Subtotal</h2>
+				<p id="subTotal" class="text-sm sm:text-base font-roboto">$140.000</p>
+				<h2 class="text-sm sm:text-base font-roboto">IVA (19%)</h2>
+				<p id="iva" class="text-sm sm:text-base font-roboto">$26.600</p>
+				<h2 class="text-sm sm:text-base font-roboto">Envío</h2>
+				<p class="text-sm sm:text-base font-roboto">$0</p>
+				<h2 class="text-sm sm:text-base font-roboto font-medium">Total</h2>
+				<p id="total" class="text-sm sm:text-base font-roboto">$166.600</p>
+			</div>
+		</template>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+		<script src="deliveryApp.js" type="module"></script>
+	</body>
 </html>
